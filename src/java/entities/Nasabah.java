@@ -49,7 +49,7 @@ public class Nasabah implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "NO_POLIS")
-    private Long noPolis;
+    private String noPolis;
     @Column(name = "NM_NASABAH")
     private String nmNasabah;
     @Column(name = "TGL_LAHIR")
@@ -72,7 +72,7 @@ public class Nasabah implements Serializable {
     public Nasabah() {
     }
 
-    public Nasabah(Long noPolis) {
+    public Nasabah(String noPolis) {
         this.noPolis = noPolis;
     }
 
@@ -84,11 +84,11 @@ public class Nasabah implements Serializable {
         this.ktp = ktp;
     }
 
-    public Long getNoPolis() {
+    public String getNoPolis() {
         return noPolis;
     }
 
-    public void setNoPolis(Long noPolis) {
+    public void setNoPolis(String noPolis) {
         this.noPolis = noPolis;
     }
 
@@ -180,6 +180,5 @@ public class Nasabah implements Serializable {
     @Override
     public String toString() {
         return "entities.Nasabah[ noPolis=" + noPolis + " ]";
-    }
-    
+    }    
 }
