@@ -6,6 +6,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -23,16 +24,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Medina
+ * @author pahmi
  */
 @Entity
-@Table(name = "PEMBAYARAN", catalog = "", schema = "HR")
+@Table(name = "PEMBAYARAN")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Pembayaran.findAll", query = "SELECT p FROM Pembayaran p")
     , @NamedQuery(name = "Pembayaran.findByNoPembayaran", query = "SELECT p FROM Pembayaran p WHERE p.noPembayaran = :noPembayaran")
     , @NamedQuery(name = "Pembayaran.findByTglPembayaran", query = "SELECT p FROM Pembayaran p WHERE p.tglPembayaran = :tglPembayaran")
-    , @NamedQuery(name = "Pembayaran.findByJumlahBayar", query = "SELECT p FROM Pembayaran p WHERE p.jumlahBayar = :jumlahBayar")})
+    , @NamedQuery(name = "Pembayaran.findByJumlahBayar", query = "SELECT p FROM Pembayaran p WHERE p.jumlahBayar = :jumlahBayar")
+    , @NamedQuery(name = "Pembayaran.findBySaldo", query = "SELECT p FROM Pembayaran p WHERE p.saldo = :saldo")})
 public class Pembayaran implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,6 +47,8 @@ public class Pembayaran implements Serializable {
     private Date tglPembayaran;
     @Column(name = "JUMLAH_BAYAR")
     private String jumlahBayar;
+    @Column(name = "SALDO")
+    private BigInteger saldo;
     @JoinColumn(name = "ID_ASURANSI", referencedColumnName = "ID_ASURANSI")
     @ManyToOne(fetch = FetchType.LAZY)
     private Asuransi idAsuransi;
@@ -81,6 +85,14 @@ public class Pembayaran implements Serializable {
 
     public void setJumlahBayar(String jumlahBayar) {
         this.jumlahBayar = jumlahBayar;
+    }
+
+    public BigInteger getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(BigInteger saldo) {
+        this.saldo = saldo;
     }
 
     public Asuransi getIdAsuransi() {

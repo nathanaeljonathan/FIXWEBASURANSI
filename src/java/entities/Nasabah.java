@@ -26,10 +26,10 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Medina
+ * @author pahmi
  */
 @Entity
-@Table(name = "NASABAH", catalog = "", schema = "HR")
+@Table(name = "NASABAH")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Nasabah.findAll", query = "SELECT n FROM Nasabah n")
@@ -49,7 +49,7 @@ public class Nasabah implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "NO_POLIS")
-    private String noPolis;
+    private Long noPolis;
     @Column(name = "NM_NASABAH")
     private String nmNasabah;
     @Column(name = "TGL_LAHIR")
@@ -63,6 +63,8 @@ public class Nasabah implements Serializable {
     private String penghasilan;
     @Column(name = "ALAMAT")
     private String alamat;
+    @OneToMany(mappedBy = "noPolis", fetch = FetchType.LAZY)
+    private List<Klaim> klaimList;
     @JoinColumn(name = "ID_ADMIN", referencedColumnName = "ID_ADMIN")
     @ManyToOne(fetch = FetchType.LAZY)
     private Admin idAdmin;
@@ -72,7 +74,7 @@ public class Nasabah implements Serializable {
     public Nasabah() {
     }
 
-    public Nasabah(String noPolis) {
+    public Nasabah(Long noPolis) {
         this.noPolis = noPolis;
     }
 
@@ -84,11 +86,11 @@ public class Nasabah implements Serializable {
         this.ktp = ktp;
     }
 
-    public String getNoPolis() {
+    public Long getNoPolis() {
         return noPolis;
     }
 
-    public void setNoPolis(String noPolis) {
+    public void setNoPolis(Long noPolis) {
         this.noPolis = noPolis;
     }
 
@@ -140,6 +142,15 @@ public class Nasabah implements Serializable {
         this.alamat = alamat;
     }
 
+    @XmlTransient
+    public List<Klaim> getKlaimList() {
+        return klaimList;
+    }
+
+    public void setKlaimList(List<Klaim> klaimList) {
+        this.klaimList = klaimList;
+    }
+
     public Admin getIdAdmin() {
         return idAdmin;
     }
@@ -180,5 +191,6 @@ public class Nasabah implements Serializable {
     @Override
     public String toString() {
         return "entities.Nasabah[ noPolis=" + noPolis + " ]";
-    }    
+    }
+    
 }

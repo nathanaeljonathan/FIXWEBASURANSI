@@ -108,6 +108,9 @@
                     <th>NO</th>
                     <th>ID ASURANSI</th>
                     <th>NAMA ASURANSI</th>
+                    <th>BUNGA</th>
+                    <th>MASA_BERLAKU</th>
+                    <th>HARGA</th>
                     <th colspan="2">AKSI</th>
                 </tr>
             </thead>
@@ -122,6 +125,9 @@
                     <td><%= i++ %></td>
                     <td><%= a.getIdAsuransi() %></td>
                     <td><%= a.getNmAsuransi() %></td>
+                    <td><%= a.getBunga() %></td>
+                    <td><%= a.getMasaBerlaku() %></td>
+                    <td><%= a.getHarga() %></td>
                     <td>
                         <a href="asuranUpdateServlet?id=<%= a.getIdAsuransi()%>">Update</a>
                         <a href="asuranDeleteServlet?id=<%= a.getIdAsuransi()%>">Delete</a>
@@ -133,51 +139,7 @@
             %>
         </table>
         <br>
-        <!--<a href="asuranAutoID" class="button button1">ADD</a>-->
-
-<!--        <section id="admin" class="contact sections">
-            <div class="container">
-                <div class="row">
-                    <div class="main_contact whitebackground">
-                        <div class="head_title text-center">
-                            <h2>ADD DATA ADMIN</h2>
-                        </div>
-                        <div class="contact_content">
-                            <div class="col-md-6">
-                                <div class="single_left_contact">
-                                    <form action="#" id="formid">
-
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="id" placeholder="ID Admin" required="">
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="name" placeholder="Nama Admin" required="">
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <textarea class="form-control" name="alamat" rows="3" placeholder="Alamat"></textarea>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="notelp" placeholder="Nomor Telephone" required="">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" name="email" placeholder="Email" required="">
-                                        </div>
-                                        
-                                        <div class="center-content">
-                                            <input type="submit" value="Save" class="btn btn-default">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> End of Contact Section -->
+        
         <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
         <script src="assets/js/vendor/bootstrap.min.js"></script>
 

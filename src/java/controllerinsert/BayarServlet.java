@@ -56,7 +56,7 @@ public class BayarServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             Pembayaran bayar = new Pembayaran(id);
             bayar.setTglPembayaran(date1);
-            bayar.setNoPolis(new Nasabah(noPolis));
+            bayar.setNoPolis(new Nasabah(Long.parseLong(noPolis)));
             bayar.setJumlahBayar(jmlbayar);
             bayar.setIdAsuransi(new Asuransi(idasuransi));
             if (pdao.insert(bayar)) {

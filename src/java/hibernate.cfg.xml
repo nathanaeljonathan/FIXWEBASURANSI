@@ -52,6 +52,7 @@ Contributor(s):
     <property name="hibernate.default_schema">hr</property>
     <mapping class="entities.Admin"/>
     <mapping class="entities.Asuransi"/>
+    <mapping class="entities.Klaim"/>
     <mapping class="entities.Nasabah"/>
     <mapping class="entities.Pembayaran"/>
   </session-factory>

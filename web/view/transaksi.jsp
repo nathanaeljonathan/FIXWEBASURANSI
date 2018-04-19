@@ -111,6 +111,7 @@
                     <th>NAMA NASABAH</th>
                     <th>JUMLAH BAYAR</th>
                     <th>ASURANSI</th>
+                    <th>SALDO</th>
                     
                 </tr>
             </thead>
@@ -129,6 +130,7 @@
                     <td><%= a.getNoPolis().getNmNasabah() %></td>
                     <td><%= a.getJumlahBayar()%></td>
                     <td><%= a.getIdAsuransi().getNmAsuransi() %></td>
+                    <td><%= a.getSaldo() %></td>
                     
                 </tr>
             </tbody>

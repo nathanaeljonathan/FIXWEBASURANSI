@@ -6,6 +6,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -21,15 +22,18 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Medina
+ * @author pahmi
  */
 @Entity
-@Table(name = "ASURANSI", catalog = "", schema = "HR")
+@Table(name = "ASURANSI")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Asuransi.findAll", query = "SELECT a FROM Asuransi a")
     , @NamedQuery(name = "Asuransi.findByIdAsuransi", query = "SELECT a FROM Asuransi a WHERE a.idAsuransi = :idAsuransi")
-    , @NamedQuery(name = "Asuransi.findByNmAsuransi", query = "SELECT a FROM Asuransi a WHERE a.nmAsuransi = :nmAsuransi")})
+    , @NamedQuery(name = "Asuransi.findByNmAsuransi", query = "SELECT a FROM Asuransi a WHERE a.nmAsuransi = :nmAsuransi")
+    , @NamedQuery(name = "Asuransi.findByBunga", query = "SELECT a FROM Asuransi a WHERE a.bunga = :bunga")
+    , @NamedQuery(name = "Asuransi.findByMasaBerlaku", query = "SELECT a FROM Asuransi a WHERE a.masaBerlaku = :masaBerlaku")
+    , @NamedQuery(name = "Asuransi.findByHarga", query = "SELECT a FROM Asuransi a WHERE a.harga = :harga")})
 public class Asuransi implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,6 +43,14 @@ public class Asuransi implements Serializable {
     private String idAsuransi;
     @Column(name = "NM_ASURANSI")
     private String nmAsuransi;
+    @Column(name = "BUNGA")
+    private BigInteger bunga;
+    @Column(name = "MASA_BERLAKU")
+    private String masaBerlaku;
+    @Column(name = "HARGA")
+    private BigInteger harga;
+    @OneToMany(mappedBy = "idAsuransi", fetch = FetchType.LAZY)
+    private List<Klaim> klaimList;
     @OneToMany(mappedBy = "idAsuransi", fetch = FetchType.LAZY)
     private List<Pembayaran> pembayaranList;
 
@@ -63,6 +75,39 @@ public class Asuransi implements Serializable {
 
     public void setNmAsuransi(String nmAsuransi) {
         this.nmAsuransi = nmAsuransi;
+    }
+
+    public BigInteger getBunga() {
+        return bunga;
+    }
+
+    public void setBunga(BigInteger bunga) {
+        this.bunga = bunga;
+    }
+
+    public String getMasaBerlaku() {
+        return masaBerlaku;
+    }
+
+    public void setMasaBerlaku(String masaBerlaku) {
+        this.masaBerlaku = masaBerlaku;
+    }
+
+    public BigInteger getHarga() {
+        return harga;
+    }
+
+    public void setHarga(BigInteger harga) {
+        this.harga = harga;
+    }
+
+    @XmlTransient
+    public List<Klaim> getKlaimList() {
+        return klaimList;
+    }
+
+    public void setKlaimList(List<Klaim> klaimList) {
+        this.klaimList = klaimList;
     }
 
     @XmlTransient

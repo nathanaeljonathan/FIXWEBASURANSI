@@ -57,7 +57,7 @@ public class ProsesUpdateNasabah extends HttpServlet {
         }
         
         try (PrintWriter out = response.getWriter()) {
-           Nasabah nasabah = new Nasabah(id);
+           Nasabah nasabah = new Nasabah(Long.parseLong(id));
            nasabah.setKtp(ktp);
            nasabah.setNmNasabah(nama);
            nasabah.setTglLahir(date1);
