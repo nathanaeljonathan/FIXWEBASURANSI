@@ -84,6 +84,18 @@
         <servlet-name>BayarServlet</servlet-name>
         <servlet-class>controllerinsert.BayarServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>KlaimServlet</servlet-name>
+        <servlet-class>controller.KlaimServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>KlaimInsertServlet</servlet-name>
+        <servlet-class>controllerinsert.KlaimServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>KlaimAutotID</servlet-name>
+        <servlet-class>controllerinsert.KlaimAutotID</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdminServlet</servlet-name>
         <url-pattern>/adminServlet</url-pattern>
@@ -167,6 +179,18 @@
     <servlet-mapping>
         <servlet-name>BayarServlet</servlet-name>
         <url-pattern>/bayarInsertServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KlaimServlet</servlet-name>
+        <url-pattern>/klaimServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KlaimInsertServlet</servlet-name>
+        <url-pattern>/klaimInsertServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KlaimAutotID</servlet-name>
+        <url-pattern>/klaimAutotID</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

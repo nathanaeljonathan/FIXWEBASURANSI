@@ -1,11 +1,10 @@
 <%-- 
-    Document   : pembayaran
-    Created on : Apr 18, 2018, 2:47:52 PM
+    Document   : klaim
+    Created on : Apr 19, 2018, 2:58:40 PM
     Author     : Medina
 --%>
 
-<%@page import="entities.Asuransi"%>
-<%@page import="dao.AsuransiDao"%>
+<%@page import="entities.Klaim"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -38,7 +37,7 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <div class='preloader'><div class='loaded'>&nbsp;</div></div>
+		<div class='preloader'><div class='loaded'>&nbsp;</div></div>
         <!-- Sections -->
         <section id="social" class="social">
             <div class="container">
@@ -86,7 +85,7 @@
                         <li><a href="nasabahServlet">NASABAH</a></li>
                         <li><a href="asuransiServlet">ASURANSI</a></li>
                         <li><a href="transaksiServlet">PEMBAYARAN</a></li>
-                        <li><a href="#contact">REPORT</a></li>
+                        <li><a href="#contact">KLAIM</a></li>
                         <li><a href="#contact">CONTACT</a></li>
                         <!--<li class="login"><a href="#">Sign In</a></li>-->
                     </ul>
@@ -94,65 +93,55 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-        <section id="admin" class="contact sections">
+        
+        <!-- Sections -->
+        <section id="business" class="portfolio sections">
             <div class="container">
-                <div class="row">
-                    <div class="main_contact whitebackground">
-                        <div class="head_title text-center">
-                            <h2>PEMBAYARAN</h2>
-                        </div>
-                        <div class="contact_content">
-                            <div class="col-md-6">
-                                <div class="single_left_contact">
-                                    <form id="formid" action="bayarInsertServlet" method="POST">
-                                        <% String asr = (String) session.getAttribute("autoID");%>
-
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="nobayar" placeholder="No Pembayaran" value="<%= asr%>">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="date" class="form-control" name="tglbayar" placeholder="Tanggal Bayar" value="">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="noPolis" placeholder="No Polis" required="" value="">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="jmlbayar" placeholder="Jumlah Bayar" required="" value="">
-                                        </div>
-
-                                        <div>
-                                            <select name="idasuransi">
-                                                <% List<Object> datas2 = new AsuransiDao().getAll();
-                                                    for (Object data : datas2) {
-                                                        Asuransi asrr = (Asuransi) data;%>
-                                                <option value="<%= asrr.getIdAsuransi()%>"><%= asrr.getNmAsuransi()%></option>
-                                                <%
-                                                        }%>
-                                            </select>
-                                        </div>
-                                            
-
-                                        <div class="center-content">
-                                            <input type="submit" value="Add" class="btn btn-default">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="head_title text-center">
+                    <h1>KLAIM</h1>
+                    <!--<p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>-->
                 </div>
-            </div>
-
-        </section><!-- End of Contact Section -->
+                
+            <table border="1" id="t01">
+            <thead>
+                <tr>
+                    <th>ID KLAIM</th>
+                    <th>NO POLIS</th>
+                    <th>ID ASURANSI</th>
+                    <th>TGL KLAIM</th>
+                    <th>JUMLAH KLAIM</th>
+                </tr>
+            </thead>
+            <%
+//                List<Object> datas = new AdminDao().getAll();
+                List<Object> datas = (List<Object>) session.getAttribute("dataKlaim") ;
+                int i = 1;
+                for (Object data : datas) {
+                    Klaim a = (Klaim) data;
+            %>
+            <tbody>
+                <tr>
+                    <td><%= a.getIdKlaim()%></td>
+                    <td><%= a.getNoPolis()%></td>
+                    <td><%= a.getIdAsuransi()%></td>
+                    <td><%= a.getTglKlaim()%></td>
+                    <td></td>
+                    
+                </tr>
+            </tbody>
+            <%
+                }
+            %>
+        </table>
+        <br>
+        <a href="klaimAutotID" class="button button1">ADD</a>
+            
         <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
         <script src="assets/js/vendor/bootstrap.min.js"></script>
 
         <script src="assets/js/plugins.js"></script>
         <script src="assets/js/modernizr.js"></script>
         <script src="assets/js/main.js"></script>
-
+        
     </body>
 </html>

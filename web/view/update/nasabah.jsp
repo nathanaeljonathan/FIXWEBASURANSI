@@ -36,14 +36,14 @@
         <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
     <body>
-        <%   
-        Object datas = session.getAttribute("nasabah");
-        Nasabah nasabah = (Nasabah) datas;
+        <%
+            Object datas = session.getAttribute("nasabah");
+            Nasabah nasabah = (Nasabah) datas;
         %>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-		<div class='preloader'><div class='loaded'>&nbsp;</div></div>
+        <div class='preloader'><div class='loaded'>&nbsp;</div></div>
         <!-- Sections -->
         <section id="social" class="social">
             <div class="container">
@@ -114,52 +114,56 @@
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="ktp" placeholder="KTP" required="" value="<%= nasabah.getKtp()%>" readonly="true">
                                         </div>
-                                        
+
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="noPolis" placeholder="No Polis" required="" value="<%= nasabah.getNoPolis() %>">
+                                            <input type="text" class="form-control" name="noPolis" placeholder="No Polis" required="" value="<%= nasabah.getNoPolis()%>">
                                         </div>
-                                        
+
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="nama" placeholder="Nama Nasabah" required="" value="<%= nasabah.getNmNasabah() %>">
+                                            <input type="text" class="form-control" name="nama" placeholder="Nama Nasabah" required="" value="<%= nasabah.getNmNasabah()%>">
                                         </div>
-                                        
+
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="tgllahir" placeholder="Tanggal Lahir" value="<%= nasabah.getTglLahir() %>">
+                                            <input type="text" class="form-control" name="tgllahir" placeholder="Tanggal Lahir" value="<%= nasabah.getTglLahir()%>">
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <td>Status</td><br>
-                                            <% if (nasabah.getStatus().equals("LAJANG")){ %>
+                                            <% if (nasabah.getStatus().equals("LAJANG")) { %>
                                             <input type="radio" name="status" checked="" value="LAJANG"> Lajang <br>
                                             <input type="radio" name="status" value="MENIKAH" > Menikah <br> <% } else { %>
                                             <input type="radio" name="status" value="LAJANG" > Lajang <br>
-                                            <input type="radio" name="status" value="MENIKAH" checked=""> Menikah <br> <% } %>
+                                            <input type="radio" name="status" value="MENIKAH" checked=""> Menikah <br> <% }%>
                                             <br>
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="pekerjaan" placeholder="Pekerjaan" required="" value="<%= nasabah.getPekerjaan()%>">
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="penghasilan" placeholder="Penghasilan" required="" value="<%= nasabah.getPenghasilan()%>">
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="alamat" placeholder="Alamat" value="<%= nasabah.getAlamat()%>">
                                         </div>
-                                        
+
                                         <div>
                                             <select name="admin">
-                                                <% List<Object> datas2 = new AdminDao().getAll();
-                                                for (Object data : datas2){
-                                                    Admin admin = (Admin) data; %>
-                                                    <option value="<%= admin.getIdAdmin() %>"><%= admin.getNamaAdmin() %></option>
-                                                    <%
-                                                } %>
+                                                <% List<Object> datas2 = (List<Object>) session.getAttribute("datas2");
+                                                    for (Object data : datas2) {
+                                                        Admin admin = (Admin) data;
+                                                        if (admin.getIdAdmin().equals(admin.getNamaAdmin())) {
+                                                %>
+                                                <option value="<%= admin.getIdAdmin()%>" selected><%= admin.getNamaAdmin()%></option>
+                                                <%} else {%>
+                                                <option value="<%= admin.getIdAdmin()%>"> <%= admin.getNamaAdmin()%> </option><%   }
+                                                    }
+                                                %>
                                             </select>
                                         </div>
-                                        
+
                                         <div class="center-content">
                                             <input type="submit" value="Update" class="btn btn-default">
                                         </div>
@@ -177,6 +181,6 @@
         <script src="assets/js/plugins.js"></script>
         <script src="assets/js/modernizr.js"></script>
         <script src="assets/js/main.js"></script>
-        
+
     </body>
 </html>

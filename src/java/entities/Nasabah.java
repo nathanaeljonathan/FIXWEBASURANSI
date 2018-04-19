@@ -190,7 +190,7 @@ public class Nasabah implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Nasabah[ noPolis=" + noPolis + " ]";
+        return "" + noPolis + "";
     }
     
 }

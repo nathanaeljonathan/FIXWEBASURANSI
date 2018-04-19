@@ -125,7 +125,10 @@
                     <td><%= i++ %></td>
                     <td><%= a.getIdAsuransi() %></td>
                     <td><%= a.getNmAsuransi() %></td>
-                    <td><%= a.getBunga() %></td>
+                    <td><%= a.getBunga() %>%</td>
+                    <% // if (a.getMasaBerlaku() != null){
+//                        a.getMasaBerlaku(); }
+                    %>
                     <td><%= a.getMasaBerlaku() %></td>
                     <td><%= a.getHarga() %></td>
                     <td>
