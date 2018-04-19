@@ -76,6 +76,14 @@
         <servlet-name>AdminInsertServlet</servlet-name>
         <servlet-class>controllerinsert.AdminServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BayarAutoID</servlet-name>
+        <servlet-class>controllerinsert.BayarAutoID</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BayarServlet</servlet-name>
+        <servlet-class>controllerinsert.BayarServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdminServlet</servlet-name>
         <url-pattern>/adminServlet</url-pattern>
@@ -151,6 +159,14 @@
     <servlet-mapping>
         <servlet-name>AdminInsertServlet</servlet-name>
         <url-pattern>/adminInsertServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BayarAutoID</servlet-name>
+        <url-pattern>/bayarAutoID</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BayarServlet</servlet-name>
+        <url-pattern>/bayarInsertServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

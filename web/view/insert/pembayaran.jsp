@@ -4,6 +4,9 @@
     Author     : Medina
 --%>
 
+<%@page import="entities.Asuransi"%>
+<%@page import="dao.AsuransiDao"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html class="no-js" lang=""> <!--<![endif]-->
@@ -35,7 +38,7 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-		<div class='preloader'><div class='loaded'>&nbsp;</div></div>
+        <div class='preloader'><div class='loaded'>&nbsp;</div></div>
         <!-- Sections -->
         <section id="social" class="social">
             <div class="container">
@@ -102,33 +105,35 @@
                             <div class="col-md-6">
                                 <div class="single_left_contact">
                                     <form id="formid" action="bayarInsertServlet" method="POST">
-                                        <%  %>
+                                        <% String asr = (String) session.getAttribute("autoID");%>
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="nobayar" placeholder="No Pembayaran" >
+                                            <input type="text" class="form-control" name="nobayar" placeholder="No Pembayaran" value="<%= asr%>">
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <input type="date" class="form-control" name="tglbayar" placeholder="Tanggal Bayar" value="">
                                         </div>
-                                        
+
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="nama" placeholder="Nama Nasabah" required="" value="">
+                                            <input type="text" class="form-control" name="noPolis" placeholder="No Polis" required="" value="">
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="jmlbayar" placeholder="Jumlah Bayar" required="" value="">
                                         </div>
-                                        
+
                                         <div>
                                             <select name="idasuransi">
-                                                <option value="">ASURANSI KESEHATAN</option>
-                                                <option value="">ASURANSI PENDIDIKAN</option>
-                                                <option value="">ASURANSI INVESTASI</option>
-                                                <option value="">ASURANSI KENDARAAN</option>
+                                                <% List<Object> datas2 = new AsuransiDao().getAll();
+                                                    for (Object data : datas2) {
+                                                        Asuransi asrr = (Asuransi) data;%>
+                                                <option value="<%= asrr.getIdAsuransi()%>"><%= asrr.getNmAsuransi()%></option>
+                                                <%
+                                                        }%>
                                             </select>
                                         </div>
-                                        
+
                                         <div class="center-content">
                                             <input type="submit" value="Add" class="btn btn-default">
                                         </div>
@@ -139,7 +144,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </section><!-- End of Contact Section -->
         <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
         <script src="assets/js/vendor/bootstrap.min.js"></script>
@@ -147,6 +152,6 @@
         <script src="assets/js/plugins.js"></script>
         <script src="assets/js/modernizr.js"></script>
         <script src="assets/js/main.js"></script>
-        
+
     </body>
 </html>

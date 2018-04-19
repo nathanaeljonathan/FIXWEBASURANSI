@@ -11,6 +11,8 @@ import entities.Nasabah;
 import entities.Pembayaran;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,17 +40,23 @@ public class BayarServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String id= request.getParameter("nobayar");
         String tglbayar= request.getParameter("tglbayar");
-        String nama = request.getParameter("nama");
+        String noPolis = request.getParameter("noPolis");
         String jmlbayar = request.getParameter("jmlbayar");
         String idasuransi = request.getParameter("idasuransi");
         String pesan="Gagal menambah data";
         RequestDispatcher dispatcher = null;
         PembayaranDao pdao = new PembayaranDao();
+        Date date1 = null;
+        try {
+            date1 = new SimpleDateFormat("yyyy-mm-dd").parse(tglbayar);
+        } catch (Exception ex) {
+            
+        }
         HttpSession session = request.getSession();
         try (PrintWriter out = response.getWriter()) {
             Pembayaran bayar = new Pembayaran(id);
-            bayar.setTglPembayaran(new java.sql.Date(new Long(tglbayar)));
-            bayar.setNoPolis(new Nasabah(nama));
+            bayar.setTglPembayaran(date1);
+            bayar.setNoPolis(new Nasabah(noPolis));
             bayar.setJumlahBayar(jmlbayar);
             bayar.setIdAsuransi(new Asuransi(idasuransi));
             if (pdao.insert(bayar)) {

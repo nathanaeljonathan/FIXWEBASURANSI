@@ -8,6 +8,7 @@ package tools;
 import dao.AdminDao;
 import dao.AsuransiDao;
 import dao.NasabahDao;
+import dao.PembayaranDao;
 
 import entities.Admin;
 import java.util.List;
@@ -24,6 +25,6 @@ public class cek {
 //                System.out.println(datas.size());
 //            }
             System.out.println(new AsuransiDao().getAutoID());
-            System.out.println(new NasabahDao().getAutoID());
+            System.out.println(new PembayaranDao().getAutoID());
     }
 }
