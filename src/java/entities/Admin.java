@@ -129,7 +129,7 @@ public class Admin implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Admin[ idAdmin=" + idAdmin + " ]";
+        return " " + idAdmin + "";
     }
     
 }

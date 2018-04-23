@@ -40,11 +40,48 @@ public class NasabahServlet extends HttpServlet {
         NasabahDao ndao = new NasabahDao();
         try (PrintWriter out = response.getWriter()) {
             if (ndao.delete(id)) {
-                pesan = "Berhasil menghapus data ";
+                
+                out.println("<script src = 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+                out.println("<script>");
+                out.println("$(document).ready(function(){");
+                out.println("swal({\n" +
+                "            title: \"Are you sure to delete ?\",\n" +
+                "            text: \"You will not be able to recover this imaginary file !!\",\n" +
+                "            type: \"warning\",\n" +
+                "            showCancelButton: true,\n" +
+                "            confirmButtonColor: \"#DD6B55\",\n" +
+                "            confirmButtonText: \"Yes, delete it !!\",\n" +
+                "            cancelButtonText: \"No, cancel it !!\",\n" +
+                "            closeOnConfirm: false,\n" +
+                "            closeOnCancel: false\n" +
+                "        },\n" +
+                "        function(isConfirm){\n" +
+                "            if (isConfirm) {\n" +
+                "                swal(\"Deleted !!\", \"Hey, your imaginary file has been deleted !!\", \"success\");\n" +
+                "            }\n" +
+                "            else {\n" +
+                "                swal(\"Cancelled !!\", \"Hey, your imaginary file is safe !!\", \"error\");\n" +
+                "            }\n" +
+                "        });");
+                out.println("});");
+                out.println("</script>");
+                
+                RequestDispatcher dispatcher = request.getRequestDispatcher("nasabahServlet");
+                dispatcher.include(request, response);
             }
-            session.setAttribute("pesan", pesan);
-            dis = request.getRequestDispatcher("nasabahServlet");
-            dis.include(request, response);
+            else{
+                out.println("<script src = 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+                out.println("<script>");
+                out.println("$(document).ready(function(){");
+                out.println("swal('Oops...', 'Gagal Menambahkan Data !!', 'error');");
+                out.println("});");
+                out.println("</script>");
+
+                RequestDispatcher dispatcher = request.getRequestDispatcher("view/nasabah.jsp");
+                dispatcher.include(request, response); 
+            }
         }
     }
 

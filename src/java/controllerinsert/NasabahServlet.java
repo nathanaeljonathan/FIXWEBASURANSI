@@ -46,8 +46,6 @@ public class NasabahServlet extends HttpServlet {
         String penghasilan = request.getParameter("penghasilan");
         String alamat = request.getParameter("alamat");
         String admin = request.getParameter("admin");
-        String pesan="Gagal menambah data";
-        RequestDispatcher dispatcher = null;
         NasabahDao ndao = new NasabahDao();
         Date date1 = null;
         try {
@@ -67,14 +65,30 @@ public class NasabahServlet extends HttpServlet {
             nasabah.setAlamat(alamat);
             nasabah.setIdAdmin(new Admin(admin));
             if (ndao.insert(nasabah)) {
-                pesan="Berhasil menambah data dengan ID :"
-                        +nasabah.getNoPolis();
+                
+                out.println("<script src = 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+                out.println("<script>");
+                out.println("$(document).ready(function(){");
+                out.println("swal('Good job!', 'Berhasil Menambahkan Data!', 'success');");
+                out.println("});");
+                out.println("</script>");
+                
+                RequestDispatcher dispatcher = request.getRequestDispatcher("nasabahServlet");
+                dispatcher.include(request, response);
             }
-          
-         session.setAttribute("pesan", pesan);
-//         session.setAttribute("autoID", ndao.getAutoID());
-         dispatcher = request.getRequestDispatcher("nasabahServlet");
-         dispatcher.include(request, response);
+            else{
+                out.println("<script src = 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+                out.println("<script>");
+                out.println("$(document).ready(function(){");
+                out.println("swal('Oops...', 'Gagal Menambahkan Data !!', 'error');");
+                out.println("});");
+                out.println("</script>");
+
+                RequestDispatcher dispatcher = request.getRequestDispatcher("view/insert/nasabah.jsp");
+                dispatcher.include(request, response); 
+            }
         }
     }
 

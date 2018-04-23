@@ -42,7 +42,7 @@ public class BayarServlet extends HttpServlet {
         String tglbayar= request.getParameter("tglbayar");
         String noPolis = request.getParameter("noPolis");
         String jmlbayar = request.getParameter("jmlbayar");
-        String idasuransi = request.getParameter("idasuransi");
+        String idasuransi = request.getParameter("idAsuransi");
         String pesan="Gagal menambah data";
         RequestDispatcher dispatcher = null;
         PembayaranDao pdao = new PembayaranDao();
@@ -64,10 +64,13 @@ public class BayarServlet extends HttpServlet {
                         +bayar.getNoPembayaran();
             }
           
+//            out.print(id+", "+tglbayar+", "+noPolis+", "+jmlbayar+", "+idasuransi);
+//            System.out.print("id baru: "+id+", "+tglbayar+", "+noPolis+", "+jmlbayar+", "+idasuransi);
          session.setAttribute("pesan", pesan);
          dispatcher = request.getRequestDispatcher("transaksiServlet");
          dispatcher.include(request, response);
-        }
+//            System.out.println(id);
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

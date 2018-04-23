@@ -43,6 +43,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Nasabah.findByAlamat", query = "SELECT n FROM Nasabah n WHERE n.alamat = :alamat")})
 public class Nasabah implements Serializable {
 
+    @OneToMany(mappedBy = "noPolis", fetch = FetchType.LAZY)
+    private List<DetailNasabah> detailNasabahList;
+
     private static final long serialVersionUID = 1L;
     @Column(name = "KTP")
     private String ktp;
@@ -191,6 +194,15 @@ public class Nasabah implements Serializable {
     @Override
     public String toString() {
         return "" + noPolis + "";
+    }
+
+    @XmlTransient
+    public List<DetailNasabah> getDetailNasabahList() {
+        return detailNasabahList;
+    }
+
+    public void setDetailNasabahList(List<DetailNasabah> detailNasabahList) {
+        this.detailNasabahList = detailNasabahList;
     }
     
 }

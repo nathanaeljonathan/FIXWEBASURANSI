@@ -44,7 +44,7 @@ public class AsuransiDao implements InterfaceDao {
 
     @Override
     public List<Object> getAll() {
-        return fdao.getAll("FROM Asuransi");
+        return fdao.getAll("FROM Asuransi order by id_asuransi");
     }
 
     @Override

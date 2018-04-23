@@ -45,7 +45,7 @@ Contributor(s):
     <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
     <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
     <property name="hibernate.connection.username">system</property>
-    <property name="hibernate.connection.password">0000</property>
+    <property name="hibernate.connection.password">21051996</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.enable_lazy_load_no_trans">true</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
@@ -55,5 +55,7 @@ Contributor(s):
     <mapping class="entities.Klaim"/>
     <mapping class="entities.Nasabah"/>
     <mapping class="entities.Pembayaran"/>
+    <mapping class="entities.Usermanagement"/>
+    <mapping class="entities.DetailNasabah"/>
   </session-factory>
 </hibernate-configuration>

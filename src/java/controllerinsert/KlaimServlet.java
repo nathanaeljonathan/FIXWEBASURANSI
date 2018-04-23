@@ -42,8 +42,6 @@ public class KlaimServlet extends HttpServlet {
         String noPolis = request.getParameter("noPolis");
         String idAsuransi = request.getParameter("idAsuransi");
         String tglklaim = request.getParameter("tglklaim");
-        String pesan="Gagal menambah data";
-        RequestDispatcher dispatcher = null;
         KlaimDao kmdao = new KlaimDao();
         Date date1 = null;
         try {
@@ -58,13 +56,30 @@ public class KlaimServlet extends HttpServlet {
             klaim.setIdAsuransi(new Asuransi(idAsuransi));
             klaim.setTglKlaim(date1);
             if (kmdao.insert(klaim)) {
-                pesan="Berhasil menambah data dengan ID :"
-                        +klaim.getIdKlaim();
+                
+                out.println("<script src = 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+                out.println("<script>");
+                out.println("$(document).ready(function(){");
+                out.println("swal('Good job!', 'Berhasil Menambahkan Data!', 'success');");
+                out.println("});");
+                out.println("</script>");
+                
+                RequestDispatcher dispatcher = request.getRequestDispatcher("klaimServlet");
+                dispatcher.include(request, response);
             }
-          
-         session.setAttribute("pesan", pesan);
-         dispatcher = request.getRequestDispatcher("klaimServlet");
-         dispatcher.include(request, response);
+            else{
+                out.println("<script src = 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+                out.println("<script>");
+                out.println("$(document).ready(function(){");
+                out.println("swal('Oops...', 'Gagal Menambahkan Data !!', 'error');");
+                out.println("});");
+                out.println("</script>");
+
+                RequestDispatcher dispatcher = request.getRequestDispatcher("view/insert/klaim.jsp");
+                dispatcher.include(request, response); 
+            }
         }
     }
 

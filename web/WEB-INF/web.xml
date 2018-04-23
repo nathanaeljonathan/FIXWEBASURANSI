@@ -29,10 +29,6 @@
         <servlet-class>controllerupdate.ProsesUpdateNasabah</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AdminDeleteServlet</servlet-name>
-        <servlet-class>controllerdelete.AdminServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AdminUpdateServlet</servlet-name>
         <servlet-class>controllerupdate.AdminServlet</servlet-class>
     </servlet>
@@ -96,6 +92,42 @@
         <servlet-name>KlaimAutotID</servlet-name>
         <servlet-class>controllerinsert.KlaimAutotID</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProsesLogin</servlet-name>
+        <servlet-class>login.ProsesLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdmDeleteServlet</servlet-name>
+        <servlet-class>controllerdelete.AdmServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportNasabah</servlet-name>
+        <servlet-class>controllerreport.ReportNasabah</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportKlaim</servlet-name>
+        <servlet-class>controllerreport.ReportKlaim</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportTransaksi</servlet-name>
+        <servlet-class>controllerreport.ReportTransaksi</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProsessLogin</servlet-name>
+        <servlet-class>controllerlogin.ProsesLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DetailNasServlet</servlet-name>
+        <servlet-class>controller.DetailNasServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DetNasAutoID</servlet-name>
+        <servlet-class>controllerinsert.DetNasAutoID</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DetNasServlet</servlet-name>
+        <servlet-class>controllerinsert.DetNasServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdminServlet</servlet-name>
         <url-pattern>/adminServlet</url-pattern>
@@ -123,10 +155,6 @@
     <servlet-mapping>
         <servlet-name>ProsesUpdateNasabah</servlet-name>
         <url-pattern>/prosesUpdateNasabah</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AdminDeleteServlet</servlet-name>
-        <url-pattern>/adminDeleteServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminUpdateServlet</servlet-name>
@@ -192,12 +220,48 @@
         <servlet-name>KlaimAutotID</servlet-name>
         <url-pattern>/klaimAutotID</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProsesLogin</servlet-name>
+        <url-pattern>/prosesLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdmDeleteServlet</servlet-name>
+        <url-pattern>/admDeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportNasabah</servlet-name>
+        <url-pattern>/reportNasabah</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportKlaim</servlet-name>
+        <url-pattern>/reportKlaim</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportTransaksi</servlet-name>
+        <url-pattern>/reportTransaksi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProsessLogin</servlet-name>
+        <url-pattern>/prosessLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailNasServlet</servlet-name>
+        <url-pattern>/detailNasServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetNasAutoID</servlet-name>
+        <url-pattern>/detNasAutoID</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetNasServlet</servlet-name>
+        <url-pattern>/detNasServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>log-in.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

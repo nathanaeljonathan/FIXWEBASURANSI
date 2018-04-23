@@ -35,20 +35,35 @@ public class ProsesUpdateAsuran extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String id = request.getParameter("txtID");
         String nama = request.getParameter("txtNama");
-        String pesan="Gagal mengubah data";
-        RequestDispatcher dispatcher = null;
         AsuransiDao adao = new AsuransiDao();
         try (PrintWriter out = response.getWriter()) {
            Asuransi asuransi = new Asuransi(id);
            asuransi.setNmAsuransi(nama);
-            if (adao.update(asuransi)) {
-                pesan="Berhasil mengubah data dengan ID : "
-                        +asuransi.getIdAsuransi();
+           if (adao.update(asuransi)) {
+                
+                out.println("<script src = 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+                out.println("<script>");
+                out.println("$(document).ready(function(){");
+                out.println("swal('Good job!', 'Berhasil Update Data!', 'success');");
+                out.println("});");
+                out.println("</script>");
+                
+                RequestDispatcher dispatcher = request.getRequestDispatcher("asuranServlet");
+                dispatcher.include(request, response);
             }
-            out.println(pesan);
-            
-            dispatcher = request.getRequestDispatcher("asuranServlet");
-            dispatcher.include(request, response);
+            else{
+                out.println("<script src = 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+                out.println("<script>");
+                out.println("$(document).ready(function(){");
+                out.println("swal('Oops...', 'Gagal Update Data !!', 'error');");
+                out.println("});");
+                out.println("</script>");
+
+                RequestDispatcher dispatcher = request.getRequestDispatcher("view/update/admin.jsp");
+                dispatcher.include(request, response); 
+            }
         }
     }
 

@@ -36,21 +36,36 @@ public class AsuranServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String id= request.getParameter("txtID");
         String nama = request.getParameter("txtNama");
-        String pesan="Gagal menambah data";
-        RequestDispatcher dispatcher = null;
         AsuransiDao adao = new AsuransiDao();
         HttpSession session = request.getSession();
         try (PrintWriter out = response.getWriter()) {
             Asuransi asuransi = new Asuransi(id);
             asuransi.setNmAsuransi(nama);
             if (adao.insert(asuransi)) {
-                pesan="Berhasil menambah data dengan ID :"
-                        +asuransi.getIdAsuransi();
+                
+                out.println("<script src = 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+                out.println("<script>");
+                out.println("$(document).ready(function(){");
+                out.println("swal('Good job!', 'Berhasil Menambahkan Data!', 'success');");
+                out.println("});");
+                out.println("</script>");
+                
+                RequestDispatcher dispatcher = request.getRequestDispatcher("asuranServlet");
+                dispatcher.include(request, response);
             }
-          
-         session.setAttribute("pesan", pesan);
-         dispatcher = request.getRequestDispatcher("asuranServlet");
-         dispatcher.include(request, response);
+            else{
+                out.println("<script src = 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+                out.println("<script>");
+                out.println("$(document).ready(function(){");
+                out.println("swal('Oops...', 'Gagal Menambahkan Data !!', 'error');");
+                out.println("});");
+                out.println("</script>");
+
+                RequestDispatcher dispatcher = request.getRequestDispatcher("view/insert/asuran.jsp");
+                dispatcher.include(request, response); 
+            }  
         }
     }
 
