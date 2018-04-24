@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author pahmi
+ * @author Medina
  */
 @Entity
 @Table(name = "PEMBAYARAN")
@@ -33,8 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Pembayaran.findAll", query = "SELECT p FROM Pembayaran p")
     , @NamedQuery(name = "Pembayaran.findByNoPembayaran", query = "SELECT p FROM Pembayaran p WHERE p.noPembayaran = :noPembayaran")
     , @NamedQuery(name = "Pembayaran.findByTglPembayaran", query = "SELECT p FROM Pembayaran p WHERE p.tglPembayaran = :tglPembayaran")
-    , @NamedQuery(name = "Pembayaran.findByJumlahBayar", query = "SELECT p FROM Pembayaran p WHERE p.jumlahBayar = :jumlahBayar")
-    , @NamedQuery(name = "Pembayaran.findBySaldo", query = "SELECT p FROM Pembayaran p WHERE p.saldo = :saldo")})
+    , @NamedQuery(name = "Pembayaran.findByJumlahBayar", query = "SELECT p FROM Pembayaran p WHERE p.jumlahBayar = :jumlahBayar")})
 public class Pembayaran implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,9 +45,7 @@ public class Pembayaran implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date tglPembayaran;
     @Column(name = "JUMLAH_BAYAR")
-    private String jumlahBayar;
-    @Column(name = "SALDO")
-    private BigInteger saldo;
+    private BigInteger jumlahBayar;
     @JoinColumn(name = "ID_ASURANSI", referencedColumnName = "ID_ASURANSI")
     @ManyToOne(fetch = FetchType.LAZY)
     private Asuransi idAsuransi;
@@ -79,20 +76,12 @@ public class Pembayaran implements Serializable {
         this.tglPembayaran = tglPembayaran;
     }
 
-    public String getJumlahBayar() {
+    public BigInteger getJumlahBayar() {
         return jumlahBayar;
     }
 
-    public void setJumlahBayar(String jumlahBayar) {
+    public void setJumlahBayar(BigInteger jumlahBayar) {
         this.jumlahBayar = jumlahBayar;
-    }
-
-    public BigInteger getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(BigInteger saldo) {
-        this.saldo = saldo;
     }
 
     public Asuransi getIdAsuransi() {

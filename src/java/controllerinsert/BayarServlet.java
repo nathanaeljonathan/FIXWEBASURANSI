@@ -11,6 +11,7 @@ import entities.Nasabah;
 import entities.Pembayaran;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.RequestDispatcher;
@@ -43,12 +44,10 @@ public class BayarServlet extends HttpServlet {
         String noPolis = request.getParameter("noPolis");
         String jmlbayar = request.getParameter("jmlbayar");
         String idasuransi = request.getParameter("idAsuransi");
-        String pesan="Gagal menambah data";
-        RequestDispatcher dispatcher = null;
         PembayaranDao pdao = new PembayaranDao();
         Date date1 = null;
         try {
-            date1 = new SimpleDateFormat("yyyy-mm-dd").parse(tglbayar);
+            date1 = new SimpleDateFormat("yyyy-MM-dd").parse(tglbayar);
         } catch (Exception ex) {
             
         }
@@ -57,19 +56,34 @@ public class BayarServlet extends HttpServlet {
             Pembayaran bayar = new Pembayaran(id);
             bayar.setTglPembayaran(date1);
             bayar.setNoPolis(new Nasabah(Long.parseLong(noPolis)));
-            bayar.setJumlahBayar(jmlbayar);
+            bayar.setJumlahBayar(BigInteger.valueOf(Long.parseLong(jmlbayar)));
             bayar.setIdAsuransi(new Asuransi(idasuransi));
             if (pdao.insert(bayar)) {
-                pesan="Berhasil menambah data dengan ID :"
-                        +bayar.getNoPembayaran();
+                
+                out.println("<script src = 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+                out.println("<script>");
+                out.println("$(document).ready(function(){");
+                out.println("swal('Selamat!', 'Berhasil Melakukan Transaksi!', 'success');");
+                out.println("});");
+                out.println("</script>");
+                
+                RequestDispatcher dispatcher = request.getRequestDispatcher("transaksiServlet");
+                dispatcher.include(request, response);
             }
-          
-//            out.print(id+", "+tglbayar+", "+noPolis+", "+jmlbayar+", "+idasuransi);
-//            System.out.print("id baru: "+id+", "+tglbayar+", "+noPolis+", "+jmlbayar+", "+idasuransi);
-         session.setAttribute("pesan", pesan);
-         dispatcher = request.getRequestDispatcher("transaksiServlet");
-         dispatcher.include(request, response);
-//            System.out.println(id);
+            else{
+                out.println("<script src = 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+                out.println("<script>");
+                out.println("$(document).ready(function(){");
+                out.println("swal('Oops...', 'Gagal Melakukan Transaksi !!', 'error');");
+                out.println("});");
+                out.println("</script>");
+
+                RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/insert/pembayaran.jsp");
+                dispatcher.include(request, response); 
+            }  
+            
             }
     }
 

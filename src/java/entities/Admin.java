@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author pahmi
+ * @author Medina
  */
 @Entity
 @Table(name = "ADMIN")
@@ -32,7 +32,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Admin.findByNamaAdmin", query = "SELECT a FROM Admin a WHERE a.namaAdmin = :namaAdmin")
     , @NamedQuery(name = "Admin.findByAlamat", query = "SELECT a FROM Admin a WHERE a.alamat = :alamat")
     , @NamedQuery(name = "Admin.findByNoTelp", query = "SELECT a FROM Admin a WHERE a.noTelp = :noTelp")
-    , @NamedQuery(name = "Admin.findByEmail", query = "SELECT a FROM Admin a WHERE a.email = :email")})
+    , @NamedQuery(name = "Admin.findByEmail", query = "SELECT a FROM Admin a WHERE a.email = :email")
+    , @NamedQuery(name = "Admin.findByPassword", query = "SELECT a FROM Admin a WHERE a.password = :password")
+    , @NamedQuery(name = "Admin.findByHakAkses", query = "SELECT a FROM Admin a WHERE a.hakAkses = :hakAkses")})
 public class Admin implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,6 +50,10 @@ public class Admin implements Serializable {
     private String noTelp;
     @Column(name = "EMAIL")
     private String email;
+    @Column(name = "PASSWORD")
+    private String password;
+    @Column(name = "HAK_AKSES")
+    private String hakAkses;
     @OneToMany(mappedBy = "idAdmin", fetch = FetchType.LAZY)
     private List<Nasabah> nasabahList;
 
@@ -98,6 +104,22 @@ public class Admin implements Serializable {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getHakAkses() {
+        return hakAkses;
+    }
+
+    public void setHakAkses(String hakAkses) {
+        this.hakAkses = hakAkses;
+    }
+
     @XmlTransient
     public List<Nasabah> getNasabahList() {
         return nasabahList;
@@ -129,7 +151,7 @@ public class Admin implements Serializable {
 
     @Override
     public String toString() {
-        return " " + idAdmin + "";
+        return "" + idAdmin + "";
     }
     
 }

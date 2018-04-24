@@ -77,7 +77,7 @@ public class AsuranServlet extends HttpServlet {
                 out.println("});");
                 out.println("</script>");
 
-                RequestDispatcher dispatcher = request.getRequestDispatcher("view/asuran.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/asuran.jsp");
                 dispatcher.include(request, response); 
             }
         }

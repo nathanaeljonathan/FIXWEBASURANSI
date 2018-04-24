@@ -47,7 +47,7 @@ public class NasabahServlet extends HttpServlet {
                 session.removeAttribute("pesan");  
             }
             session.setAttribute("dataNasabah", datas);
-            dispatcher = request.getRequestDispatcher("view/nasabah.jsp");
+            dispatcher = request.getRequestDispatcher("view/admin/nasabah.jsp");
             dispatcher.include(request, response);
         }
     }

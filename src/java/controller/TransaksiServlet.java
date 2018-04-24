@@ -46,7 +46,7 @@ public class TransaksiServlet extends HttpServlet {
                 session.removeAttribute("pesan");  
             }
             session.setAttribute("dataTransaksi", datas);
-            dispatcher = request.getRequestDispatcher("view/transaksi.jsp");
+            dispatcher = request.getRequestDispatcher("view/admin/transaksi.jsp");
             dispatcher.include(request, response);
         }
     }

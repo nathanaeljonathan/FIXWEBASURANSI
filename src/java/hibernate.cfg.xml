@@ -51,11 +51,10 @@ Contributor(s):
     <property name="hibernate.hbm2ddl.auto">update</property>
     <property name="hibernate.default_schema">hr</property>
     <mapping class="entities.Admin"/>
-    <mapping class="entities.Asuransi"/>
+    <mapping class="entities.DetailNasabah"/>
     <mapping class="entities.Klaim"/>
     <mapping class="entities.Nasabah"/>
     <mapping class="entities.Pembayaran"/>
-    <mapping class="entities.Usermanagement"/>
-    <mapping class="entities.DetailNasabah"/>
+    <mapping class="entities.Asuransi"/>
   </session-factory>
 </hibernate-configuration>

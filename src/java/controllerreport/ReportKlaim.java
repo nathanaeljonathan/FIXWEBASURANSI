@@ -44,7 +44,7 @@ public class ReportKlaim extends HttpServlet {
                 session.removeAttribute("pesan");  
             }
             session.setAttribute("dataReportKlaim", datas);
-            dispatcher = request.getRequestDispatcher("view/report/klaim.jsp");
+            dispatcher = request.getRequestDispatcher("view/admin/report/klaim.jsp");
             dispatcher.include(request, response);
         }
     }

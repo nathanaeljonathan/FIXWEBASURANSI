@@ -40,7 +40,7 @@ public class NasabahServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             Nasabah nasabah = (Nasabah) new NasabahDao().getById(id);
             session.setAttribute("nasabah", nasabah);
-            dis = request.getRequestDispatcher("view/update/nasabah.jsp");
+            dis = request.getRequestDispatcher("view/admin/update/nasabah.jsp");
             dis.include(request, response);
         }
     }

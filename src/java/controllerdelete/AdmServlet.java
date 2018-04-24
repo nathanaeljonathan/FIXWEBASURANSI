@@ -73,11 +73,11 @@ public class AdmServlet extends HttpServlet {
                 out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
                 out.println("<script>");
                 out.println("$(document).ready(function(){");
-                out.println("swal('Oops...', 'Gagal Menambahkan Data !!', 'error');");
+                out.println("swal('Oops...', 'Gagal Menghapus Data !!', 'error');");
                 out.println("});");
                 out.println("</script>");
 
-                RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/admin.jsp");
                 dispatcher.include(request, response); 
             }
         }

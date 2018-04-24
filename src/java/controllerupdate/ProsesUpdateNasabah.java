@@ -37,8 +37,8 @@ public class ProsesUpdateNasabah extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String ktp= request.getParameter("ktp");
         String id= request.getParameter("noPolis");
+        String ktp= request.getParameter("ktp");
         String nama = request.getParameter("nama");
         String tgllahir = request.getParameter("tgllahir");
         String status = request.getParameter("status");
@@ -49,7 +49,7 @@ public class ProsesUpdateNasabah extends HttpServlet {
         NasabahDao ndao = new NasabahDao();
         Date date1 = null;
         try {
-            date1 = new SimpleDateFormat("yyyy-mm-dd").parse(tgllahir);
+            date1 = new SimpleDateFormat("yyyy-MM-dd").parse(tgllahir);
         } catch (Exception ex) {
             
         }
@@ -70,7 +70,7 @@ public class ProsesUpdateNasabah extends HttpServlet {
                 out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
                 out.println("<script>");
                 out.println("$(document).ready(function(){");
-                out.println("swal('Good job!', 'Berhasil Update Data!', 'success');");
+                out.println("swal('Selamat!', 'Berhasil Update Data!', 'success');");
                 out.println("});");
                 out.println("</script>");
                 
@@ -86,7 +86,7 @@ public class ProsesUpdateNasabah extends HttpServlet {
                 out.println("});");
                 out.println("</script>");
 
-                RequestDispatcher dispatcher = request.getRequestDispatcher("view/update/admin.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/update/admin.jsp");
                 dispatcher.include(request, response); 
             } 
         }

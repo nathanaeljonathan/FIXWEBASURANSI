@@ -128,6 +128,14 @@
         <servlet-name>DetNasServlet</servlet-name>
         <servlet-class>controllerinsert.DetNasServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProsesLogout</servlet-name>
+        <servlet-class>controllerlogin.ProsesLogout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportDetNasabah</servlet-name>
+        <servlet-class>controllerreport.ReportDetNasabah</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdminServlet</servlet-name>
         <url-pattern>/adminServlet</url-pattern>
@@ -255,6 +263,14 @@
     <servlet-mapping>
         <servlet-name>DetNasServlet</servlet-name>
         <url-pattern>/detNasServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProsesLogout</servlet-name>
+        <url-pattern>/prosesLogout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportDetNasabah</servlet-name>
+        <url-pattern>/reportDetNasabah</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -44,7 +44,7 @@ public class KlaimServlet extends HttpServlet {
                 session.removeAttribute("pesan");  
             }
             session.setAttribute("dataKlaim", datas);
-            dispatcher = request.getRequestDispatcher("view/klaim.jsp");
+            dispatcher = request.getRequestDispatcher("view/admin/klaim.jsp");
             dispatcher.include(request, response);
         }
     }

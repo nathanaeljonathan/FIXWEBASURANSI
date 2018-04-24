@@ -40,7 +40,7 @@ public class AsuranServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             Asuransi asuransi = (Asuransi) new AsuransiDao().getById(id);
             session.setAttribute("asuransi", asuransi);
-            dis = request.getRequestDispatcher("view/update/asuran.jsp");
+            dis = request.getRequestDispatcher("view/admin/update/asuran.jsp");
             dis.include(request, response);
         }
     }

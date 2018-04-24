@@ -44,7 +44,7 @@ public class AsuransiServlet extends HttpServlet {
                 session.removeAttribute("pesan");  
             }
             session.setAttribute("dataAsuran", datas);
-            dispatcher = request.getRequestDispatcher("view/asuran.jsp");
+            dispatcher = request.getRequestDispatcher("view/admin/asuran.jsp");
             dispatcher.include(request, response);
         }
     }

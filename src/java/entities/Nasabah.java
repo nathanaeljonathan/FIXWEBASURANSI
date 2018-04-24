@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author pahmi
+ * @author Medina
  */
 @Entity
 @Table(name = "NASABAH")
@@ -42,9 +42,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Nasabah.findByPenghasilan", query = "SELECT n FROM Nasabah n WHERE n.penghasilan = :penghasilan")
     , @NamedQuery(name = "Nasabah.findByAlamat", query = "SELECT n FROM Nasabah n WHERE n.alamat = :alamat")})
 public class Nasabah implements Serializable {
-
-    @OneToMany(mappedBy = "noPolis", fetch = FetchType.LAZY)
-    private List<DetailNasabah> detailNasabahList;
 
     private static final long serialVersionUID = 1L;
     @Column(name = "KTP")
@@ -68,6 +65,8 @@ public class Nasabah implements Serializable {
     private String alamat;
     @OneToMany(mappedBy = "noPolis", fetch = FetchType.LAZY)
     private List<Klaim> klaimList;
+    @OneToMany(mappedBy = "noPolis", fetch = FetchType.LAZY)
+    private List<DetailNasabah> detailNasabahList;
     @JoinColumn(name = "ID_ADMIN", referencedColumnName = "ID_ADMIN")
     @ManyToOne(fetch = FetchType.LAZY)
     private Admin idAdmin;
@@ -154,6 +153,15 @@ public class Nasabah implements Serializable {
         this.klaimList = klaimList;
     }
 
+    @XmlTransient
+    public List<DetailNasabah> getDetailNasabahList() {
+        return detailNasabahList;
+    }
+
+    public void setDetailNasabahList(List<DetailNasabah> detailNasabahList) {
+        this.detailNasabahList = detailNasabahList;
+    }
+
     public Admin getIdAdmin() {
         return idAdmin;
     }
@@ -194,15 +202,6 @@ public class Nasabah implements Serializable {
     @Override
     public String toString() {
         return "" + noPolis + "";
-    }
-
-    @XmlTransient
-    public List<DetailNasabah> getDetailNasabahList() {
-        return detailNasabahList;
-    }
-
-    public void setDetailNasabahList(List<DetailNasabah> detailNasabahList) {
-        this.detailNasabahList = detailNasabahList;
     }
     
 }

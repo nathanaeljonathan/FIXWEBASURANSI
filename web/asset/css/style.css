@@ -82,7 +82,7 @@
 
 .login-img-body{
 
-  background: url('asset/images/bg-1.jpg') no-repeat center center fixed;
+  background: url('../images/bg-1.jpg') no-repeat center center fixed;
 
   -webkit-background-size: cover;
 
@@ -96,7 +96,7 @@
 
 .login-img2-body{
 
-  background: url('asset/images/bg-1.jpg') no-repeat center center fixed;
+  background: url('../images/bg-1.jpg') no-repeat center center fixed;
 
   -webkit-background-size: cover;
 
@@ -110,7 +110,7 @@
 
 .login-img3-body{
 
-  background: url('asset/images/bg-1.jpg') no-repeat center center fixed;
+  background: url('../images/bg-1.jpg') no-repeat center center fixed;
 
   -webkit-background-size: cover;
 
@@ -346,7 +346,7 @@
 
 .form .required{
 
-    font-size: 16px;
+    font-size: 1spx;
 
     color: #00a0df;
 
@@ -356,7 +356,7 @@
 
 .login-wrap {
 
-    padding: 20px;
+    padding: 100px;
 
 }
 

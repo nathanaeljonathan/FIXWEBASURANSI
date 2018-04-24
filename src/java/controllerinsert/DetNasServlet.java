@@ -11,6 +11,7 @@ import entities.Nasabah;
 import entities.DetailNasabah;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.RequestDispatcher;
@@ -41,7 +42,7 @@ public class DetNasServlet extends HttpServlet {
         String id= request.getParameter("nobayar");
         String noPolis = request.getParameter("noPolis");
         String saldo = request.getParameter("saldo");
-        String idasuransi = request.getParameter("idasuransi");
+        String idasuransi = request.getParameter("idAsuransi");
         Detail_nasDao pdao = new Detail_nasDao();
 //        Date date1 = null;
 //        try {
@@ -54,7 +55,7 @@ public class DetNasServlet extends HttpServlet {
             DetailNasabah bayar = new DetailNasabah(id);
             bayar.setIdDetail(id);
             bayar.setNoPolis(new Nasabah(Long.parseLong(noPolis)));
-//            bayar.setSaldo(new DetailNasabah(Long.parseLong(saldo)));
+            bayar.setSaldo(BigInteger.valueOf(Long.parseLong(saldo)));
             bayar.setIdAsuransi(new Asuransi(idasuransi));
             if (pdao.insert(bayar)) {
                 
@@ -62,11 +63,11 @@ public class DetNasServlet extends HttpServlet {
                 out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
                 out.println("<script>");
                 out.println("$(document).ready(function(){");
-                out.println("swal('Good job!', 'Berhasil Menambahkan Data!', 'success');");
+                out.println("swal('Selamat!', 'Berhasil Menambahkan Data!', 'success');");
                 out.println("});");
                 out.println("</script>");
                 
-                RequestDispatcher dispatcher = request.getRequestDispatcher("transaksiServlet");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("bayarAutoID");
                 dispatcher.include(request, response);
             }
             else{
@@ -78,7 +79,7 @@ public class DetNasServlet extends HttpServlet {
                 out.println("});");
                 out.println("</script>");
 
-                RequestDispatcher dispatcher = request.getRequestDispatcher("view/insert/pembayaran.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/insert/detail_nasabah.jsp");
                 dispatcher.include(request, response); 
             }
         }

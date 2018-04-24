@@ -38,6 +38,8 @@ public class ProsesUpdateAdmin extends HttpServlet {
         String alamat = request.getParameter("alamat");
         String noTelp = request.getParameter("noTelp");
         String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String hakakses = request.getParameter("hakakses");
         AdminDao amdao = new AdminDao();
         try (PrintWriter out = response.getWriter()) {
             Admin admin = new Admin(id);
@@ -45,13 +47,15 @@ public class ProsesUpdateAdmin extends HttpServlet {
             admin.setAlamat(alamat);
             admin.setEmail(email);
             admin.setNoTelp(noTelp);
+            admin.setPassword(password);
+            admin.setHakAkses(hakakses);
             if (amdao.update(admin)) {
                 
                 out.println("<script src = 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
                 out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
                 out.println("<script>");
                 out.println("$(document).ready(function(){");
-                out.println("swal('Good job!', 'Berhasil Update Data!', 'success');");
+                out.println("swal('Selamat!', 'Berhasil Update Data!', 'success');");
                 out.println("});");
                 out.println("</script>");
                 
@@ -67,7 +71,7 @@ public class ProsesUpdateAdmin extends HttpServlet {
                 out.println("});");
                 out.println("</script>");
 
-                RequestDispatcher dispatcher = request.getRequestDispatcher("view/update/admin.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/update/admin.jsp");
                 dispatcher.include(request, response); 
             }
         }

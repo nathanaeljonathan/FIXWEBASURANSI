@@ -58,7 +58,7 @@ public class Detail_nasDao implements InterfaceDao {
     }
     
      public String getAutoID(){
-        return (String) fdao.getById("SELECT CONCAT('D',LPAD((TO_NUMBER(SUBSTR(MAX(id_detail),2,2))+1),2, '0')) FROM Detail_nasabah");
+        return (String) fdao.getById("SELECT CONCAT('DA',LPAD((TO_NUMBER(SUBSTR(MAX(idDetail),3,3))+1),3, '0')) FROM DetailNasabah");
                 
     }
 

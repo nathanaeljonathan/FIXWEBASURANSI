@@ -38,13 +38,17 @@ public class AdmServlet extends HttpServlet {
         HttpSession session = request.getSession();
         AdminDao amdao = new AdminDao();
         try (PrintWriter out = response.getWriter()) {
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            if (session.getAttribute("admin") == null) {
+                response.sendRedirect("log-in.jsp");
+            }
             List<Object> datas = new AdminDao().getAll();
             if (session.getAttribute("pesan") != null) {
                 out.print(session.getAttribute("pesan") + "<br>");
                 session.removeAttribute("pesan");  
             }
             session.setAttribute("dataAdm", datas);
-            dispatcher = request.getRequestDispatcher("view/admin.jsp");
+            dispatcher = request.getRequestDispatcher("view/admin/admin.jsp");
             dispatcher.include(request, response);
         }
     }

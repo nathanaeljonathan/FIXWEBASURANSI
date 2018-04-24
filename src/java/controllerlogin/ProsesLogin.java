@@ -34,39 +34,70 @@ public class ProsesLogin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String username = request.getParameter("idAdmin");
-        String password = request.getParameter("namaAdmin");
-        String err="";
-        int q=0;
+        String password = request.getParameter("password");
+        RequestDispatcher dispatcher = null;
+        HttpSession session = request.getSession();
+        String category = "idAdmin";
+        String err = "";
+        String alert = null;
+        int q = 0;
         Admin ad = (Admin) new AdminDao().getById(username);
-          if (ad == null) {
-            err = "Tidak ada data dengan ID tersebut";
-            }
-          else if(username.equals("") || password==null){
-                err="Username harus diisi";
-            }
-            else if(password.equals("") || username==null){
-                err="Password harus diisi";
-            }
-            else if(ad.getIdAdmin().equals(username) && ad.getNamaAdmin().equals(password))
-            {
-                HttpSession session = request.getSession();
-                RequestDispatcher rd = request.getRequestDispatcher("index.html");
+        if (ad == null) {
+            alert = "Tidak ada data dengan ID tersebut";
+        } 
+        else if (username.equals("") || password == null) {
+            alert = "Username harus diisi";
+        } 
+        else if (password.equals("") || username == null) {
+            alert = "Password harus diisi";
+        } 
+        else if (ad.getIdAdmin().equals(username) && ad.getPassword().equals(password)) {
+            if (ad.getHakAkses().equals("ADMIN")) {
+                RequestDispatcher rd = request.getRequestDispatcher("indexadmin.jsp");
                 Admin admin = new Admin();
                 admin.setIdAdmin(username);
                 admin.setNamaAdmin(password);
                 session.setAttribute("admin", admin);
                 rd.forward(request, response);
+            }
+            else if (ad.getHakAkses().equals("MANAGER")) {
+                RequestDispatcher rd = request.getRequestDispatcher("indexmanager.jsp");
+                Admin admin = new Admin();
+                admin.setIdAdmin(username);
+                admin.setNamaAdmin(password);
+                session.setAttribute("admin", admin);
+                rd.forward(request, response);
+            }
+            else if (ad.getHakAkses().equals("PEGAWAI")) {
+                RequestDispatcher rd = request.getRequestDispatcher("indexpegawai.jsp");
+//                Admin admin = new Admin();
+//                admin.setIdAdmin(username);
+//                admin.setNamaAdmin(password);
+//                session.setAttribute("admin", admin);
+                rd.forward(request, response);
+            }
+            else {
+                RequestDispatcher rd = request.getRequestDispatcher("indexnasabah.jsp");
+//                Admin admin = new Admin();
+//                admin.setIdAdmin(username);
+//                admin.setNamaAdmin(password);
+//                session.setAttribute("admin", admin);
+                rd.forward(request, response);
+            }
+
         }
-              request.setAttribute("err", err);
-            RequestDispatcher rd = request.getRequestDispatcher("log-in.jsp");
-            rd.forward(request, response);
-            
-            if(q==0){
-            request.setAttribute("err", err);
-            rd = request.getRequestDispatcher("log-in.jsp");
-            rd.forward(request, response);
-        }
-        
+        session.setAttribute("err", username);
+        request.setAttribute("alert", alert);
+        RequestDispatcher rd = request.getRequestDispatcher("log-in.jsp");
+        rd.forward(request, response);
+
+//        if (q == 0) {
+//            request.setAttribute("err", err);
+//            rd = request.getRequestDispatcher("log-in.jsp");
+//            rd.forward(request, response);
+//        }
+//        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

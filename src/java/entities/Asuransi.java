@@ -7,22 +7,18 @@ package entities;
 
 import java.io.Serializable;
 import java.math.BigInteger;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author pahmi
+ * @author Medina
  */
 @Entity
 @Table(name = "ASURANSI")
@@ -32,12 +28,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Asuransi.findByIdAsuransi", query = "SELECT a FROM Asuransi a WHERE a.idAsuransi = :idAsuransi")
     , @NamedQuery(name = "Asuransi.findByNmAsuransi", query = "SELECT a FROM Asuransi a WHERE a.nmAsuransi = :nmAsuransi")
     , @NamedQuery(name = "Asuransi.findByBunga", query = "SELECT a FROM Asuransi a WHERE a.bunga = :bunga")
-    , @NamedQuery(name = "Asuransi.findByMasaBerlaku", query = "SELECT a FROM Asuransi a WHERE a.masaBerlaku = :masaBerlaku")
     , @NamedQuery(name = "Asuransi.findByHarga", query = "SELECT a FROM Asuransi a WHERE a.harga = :harga")})
 public class Asuransi implements Serializable {
-
-    @OneToMany(mappedBy = "idAsuransi", fetch = FetchType.LAZY)
-    private List<DetailNasabah> detailNasabahList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,14 +40,8 @@ public class Asuransi implements Serializable {
     private String nmAsuransi;
     @Column(name = "BUNGA")
     private BigInteger bunga;
-    @Column(name = "MASA_BERLAKU")
-    private String masaBerlaku;
     @Column(name = "HARGA")
     private BigInteger harga;
-    @OneToMany(mappedBy = "idAsuransi", fetch = FetchType.LAZY)
-    private List<Klaim> klaimList;
-    @OneToMany(mappedBy = "idAsuransi", fetch = FetchType.LAZY)
-    private List<Pembayaran> pembayaranList;
 
     public Asuransi() {
     }
@@ -88,38 +74,12 @@ public class Asuransi implements Serializable {
         this.bunga = bunga;
     }
 
-    public String getMasaBerlaku() {
-        return masaBerlaku;
-    }
-
-    public void setMasaBerlaku(String masaBerlaku) {
-        this.masaBerlaku = masaBerlaku;
-    }
-
     public BigInteger getHarga() {
         return harga;
     }
 
     public void setHarga(BigInteger harga) {
         this.harga = harga;
-    }
-
-    @XmlTransient
-    public List<Klaim> getKlaimList() {
-        return klaimList;
-    }
-
-    public void setKlaimList(List<Klaim> klaimList) {
-        this.klaimList = klaimList;
-    }
-
-    @XmlTransient
-    public List<Pembayaran> getPembayaranList() {
-        return pembayaranList;
-    }
-
-    public void setPembayaranList(List<Pembayaran> pembayaranList) {
-        this.pembayaranList = pembayaranList;
     }
 
     @Override
@@ -145,15 +105,6 @@ public class Asuransi implements Serializable {
     @Override
     public String toString() {
         return "" + idAsuransi + "";
-    }
-
-    @XmlTransient
-    public List<DetailNasabah> getDetailNasabahList() {
-        return detailNasabahList;
-    }
-
-    public void setDetailNasabahList(List<DetailNasabah> detailNasabahList) {
-        this.detailNasabahList = detailNasabahList;
     }
     
 }

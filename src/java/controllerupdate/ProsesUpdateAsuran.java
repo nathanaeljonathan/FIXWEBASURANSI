@@ -9,6 +9,7 @@ import dao.AsuransiDao;
 import entities.Asuransi;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigInteger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,17 +36,23 @@ public class ProsesUpdateAsuran extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String id = request.getParameter("txtID");
         String nama = request.getParameter("txtNama");
+        String bunga = request.getParameter("bunga");
+        String masa = request.getParameter("masa");
+        String harga = request.getParameter("harga");
         AsuransiDao adao = new AsuransiDao();
         try (PrintWriter out = response.getWriter()) {
            Asuransi asuransi = new Asuransi(id);
            asuransi.setNmAsuransi(nama);
+           asuransi.setBunga(BigInteger.valueOf(Long.parseLong(bunga)));
+//           asuransi.setMasaBerlaku(masa);
+           asuransi.setHarga(BigInteger.valueOf(Long.parseLong(harga)));
            if (adao.update(asuransi)) {
                 
                 out.println("<script src = 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
                 out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
                 out.println("<script>");
                 out.println("$(document).ready(function(){");
-                out.println("swal('Good job!', 'Berhasil Update Data!', 'success');");
+                out.println("swal('Selamat!', 'Berhasil Update Data!', 'success');");
                 out.println("});");
                 out.println("</script>");
                 
@@ -61,7 +68,7 @@ public class ProsesUpdateAsuran extends HttpServlet {
                 out.println("});");
                 out.println("</script>");
 
-                RequestDispatcher dispatcher = request.getRequestDispatcher("view/update/admin.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/update/asuran.jsp");
                 dispatcher.include(request, response); 
             }
         }

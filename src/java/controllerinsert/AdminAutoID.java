@@ -38,7 +38,7 @@ public class AdminAutoID extends HttpServlet {
         AdminDao adao = new AdminDao();
         try (PrintWriter out = response.getWriter()) {
             session.setAttribute("autoID", adao.getAutoID());
-            dis = request.getRequestDispatcher("view/insert/admin.jsp");
+            dis = request.getRequestDispatcher("view/admin/insert/admin.jsp");
             dis.forward(request, response);
         }
     }

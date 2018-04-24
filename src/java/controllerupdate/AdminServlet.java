@@ -40,7 +40,7 @@ public class AdminServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             Admin admin = (Admin) new AdminDao().getById(id);
             session.setAttribute("admin", admin);
-            dis = request.getRequestDispatcher("view/update/admin.jsp");
+            dis = request.getRequestDispatcher("view/admin/update/admin.jsp");
             dis.include(request, response);
             
         }

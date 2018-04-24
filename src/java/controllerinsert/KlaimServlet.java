@@ -45,7 +45,7 @@ public class KlaimServlet extends HttpServlet {
         KlaimDao kmdao = new KlaimDao();
         Date date1 = null;
         try {
-            date1 = new SimpleDateFormat("yyyy-mm-dd").parse(tglklaim);
+            date1 = new SimpleDateFormat("yyyy-MM-dd").parse(tglklaim);
         } catch (Exception ex) {
             
         }
@@ -61,7 +61,7 @@ public class KlaimServlet extends HttpServlet {
                 out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
                 out.println("<script>");
                 out.println("$(document).ready(function(){");
-                out.println("swal('Good job!', 'Berhasil Menambahkan Data!', 'success');");
+                out.println("swal('Selamat!', 'Berhasil Menambahkan Data!', 'success');");
                 out.println("});");
                 out.println("</script>");
                 
@@ -77,7 +77,7 @@ public class KlaimServlet extends HttpServlet {
                 out.println("});");
                 out.println("</script>");
 
-                RequestDispatcher dispatcher = request.getRequestDispatcher("view/insert/klaim.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/insert/klaim.jsp");
                 dispatcher.include(request, response); 
             }
         }

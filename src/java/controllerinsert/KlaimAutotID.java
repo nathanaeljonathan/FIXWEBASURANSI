@@ -38,7 +38,7 @@ public class KlaimAutotID extends HttpServlet {
         KlaimDao kdao = new KlaimDao();
         try (PrintWriter out = response.getWriter()) {
             session.setAttribute("autoID", kdao.getAutoID());
-            dis = request.getRequestDispatcher("view/insert/klaim.jsp");
+            dis = request.getRequestDispatcher("view/admin/insert/klaim.jsp");
             dis.forward(request, response);
         }
     }

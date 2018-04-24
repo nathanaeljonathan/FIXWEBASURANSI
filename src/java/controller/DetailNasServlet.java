@@ -44,7 +44,7 @@ public class DetailNasServlet extends HttpServlet {
                 session.removeAttribute("pesan");  
             }
             session.setAttribute("dataDetail", datas);
-            dispatcher = request.getRequestDispatcher("view/admin.jsp");
+            dispatcher = request.getRequestDispatcher("view/admin/detail_nasabah.jsp");
             dispatcher.include(request, response);
         }
     }

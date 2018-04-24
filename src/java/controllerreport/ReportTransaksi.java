@@ -44,7 +44,7 @@ public class ReportTransaksi extends HttpServlet {
                 session.removeAttribute("pesan");  
             }
             session.setAttribute("dataReportTransaksi", datas);
-            dispatcher = request.getRequestDispatcher("view/report/transaksi.jsp");
+            dispatcher = request.getRequestDispatcher("view/admin/report/transaksi.jsp");
             dispatcher.include(request, response);
         }
     }

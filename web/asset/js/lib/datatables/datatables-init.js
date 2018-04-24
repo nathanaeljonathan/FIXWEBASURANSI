@@ -40,6 +40,6 @@ $(document).ready(function() {
     $('#example23').DataTable({
         dom: 'Bfrtip',
         buttons: [
-           'pdf', 'print'
+           'copy', 'csv', 'excel', 'pdf'
         ]
     });

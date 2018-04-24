@@ -39,6 +39,8 @@ public class AdminServlet extends HttpServlet {
         String alamat = request.getParameter("alamat");
         String noTelp = request.getParameter("noTelp");
         String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String hakakses = request.getParameter("hakakses");
         AdminDao amdao = new AdminDao();
         HttpSession session = request.getSession();
         try (PrintWriter out = response.getWriter()) {
@@ -47,13 +49,15 @@ public class AdminServlet extends HttpServlet {
             admin.setAlamat(alamat);
             admin.setNoTelp(noTelp);
             admin.setEmail(email);
+            admin.setPassword(password);
+            admin.setHakAkses(hakakses);
             if (amdao.insert(admin)) {
                 
                 out.println("<script src = 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
                 out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
                 out.println("<script>");
                 out.println("$(document).ready(function(){");
-                out.println("swal('Good job!', 'Berhasil Menambahkan Data!', 'success');");
+                out.println("swal('Selamat!', 'Berhasil Menambahkan Data!', 'success');");
                 out.println("});");
                 out.println("</script>");
                 
@@ -69,7 +73,7 @@ public class AdminServlet extends HttpServlet {
                 out.println("});");
                 out.println("</script>");
 
-                RequestDispatcher dispatcher = request.getRequestDispatcher("view/insert/admin.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/insert/admin.jsp");
                 dispatcher.include(request, response); 
             }  
         }

@@ -38,7 +38,7 @@ public class NasabahAutotID extends HttpServlet {
         NasabahDao ndao = new NasabahDao();
         try (PrintWriter out = response.getWriter()) {
             session.setAttribute("autoID", ndao.getAutoID());
-            dis = request.getRequestDispatcher("view/insert/nasabah.jsp");
+            dis = request.getRequestDispatcher("view/admin/insert/nasabah.jsp");
             dis.forward(request, response);
         }
     }

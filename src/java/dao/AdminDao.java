@@ -57,7 +57,7 @@ public class AdminDao implements InterfaceDao {
     }
     
     public String getAutoID(){
-        return (String) fdao.getById("SELECT CONCAT('ADM',LPAD((TO_NUMBER(SUBSTR(MAX(id_admin),4,2))+1),2, '0')) FROM Admin");
+        return (String) fdao.getById("SELECT CONCAT('ADM',LPAD((TO_NUMBER(SUBSTR(MAX(idAdmin),4,2))+1),2, '0')) FROM Admin");
                 
     }
 }

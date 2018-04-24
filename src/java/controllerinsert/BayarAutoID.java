@@ -38,7 +38,7 @@ public class BayarAutoID extends HttpServlet {
         PembayaranDao pd = new PembayaranDao();
         try (PrintWriter out = response.getWriter()) {
             session.setAttribute("autoID", pd.getAutoID());
-            dis = request.getRequestDispatcher("view/insert/pembayaran.jsp");
+            dis = request.getRequestDispatcher("view/admin/insert/pembayaran.jsp");
             dis.forward(request, response);
         }
     }
