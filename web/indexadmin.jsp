@@ -1,3 +1,4 @@
+<%@page import="entities.Admin"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,6 +31,9 @@
 </head>
 
 <body class="fix-header fix-sidebar">
+    <%  Object datas = session.getAttribute("admin");
+    Admin admin = (Admin) datas;
+    %>
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -217,8 +221,11 @@
             
             <!-- Bread crumb -->
             <div class="row page-titles">
+                <img src="asset/images/img1.jpg" padding="4px">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">${admin}</h3> </div>
+                    <br>
+                    <h3 class="text-primary">WELCOME <%= admin.getNamaAdmin() %> :)</h3> </div>
+                    
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>

@@ -5,6 +5,7 @@
  */
 package controllerinsert;
 
+import dao.Detail_nasDao;
 import dao.KlaimDao;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -36,8 +37,10 @@ public class KlaimAutotID extends HttpServlet {
         HttpSession session = request.getSession();
         RequestDispatcher dis = null;
         KlaimDao kdao = new KlaimDao();
+        String id = request.getParameter("id");
         try (PrintWriter out = response.getWriter()) {
             session.setAttribute("autoID", kdao.getAutoID());
+            session.setAttribute("detailnasabah", new Detail_nasDao().getById(id));
             dis = request.getRequestDispatcher("view/admin/insert/klaim.jsp");
             dis.forward(request, response);
         }

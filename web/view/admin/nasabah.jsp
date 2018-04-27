@@ -42,7 +42,7 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="indexadmin.jsp">
                         <!-- Logo icon -->
                         <b><img src="images/logo.png" alt="Asuransi" class="dark-logo" /></b>
                         <!--End Logo icon -->
@@ -241,10 +241,6 @@
                                                 <th>POLIS</th>
                                                 <th>KTP</th>
                                                 <th>NAMA</th>
-                                                <th>TTL</th>
-                                                <th>STATUS</th>
-                                                <th>PEKERJAAN</th>
-                                                <th>PENGHASILAN</th>
                                                 <th>ALAMAT</th>
                                                 <th>ADMIN</th>
                                                 <th>AKSI</th>
@@ -263,16 +259,13 @@
                                                 <td><%= a.getNoPolis()%></td>
                                                 <td><%= a.getKtp()%></td>
                                                 <td><%= a.getNmNasabah()%></td>
-                                                <td><%= cc %></td>
-                                                <td><%= a.getStatus() %></td>
-                                                <td><%= a.getPekerjaan() %></td>
-                                                <td><%= a.getPenghasilan() %></td>
                                                 <td><%= a.getAlamat() %></td>
                                                 <td><%= a.getIdAdmin().getNamaAdmin() %></td>
                                                 <td>
+                                                    <a href="viewNasServlet?id=<%= a.getKtp()%>"><i class="fa fa-eye"></i></a>
                                                     <a href="nasabahUpdateServlet?id=<%= a.getKtp()%>"><i class="fa fa-edit"></i></a>
-                                                    <a href="${pageContext.request.contextPath}/nasabahDeleteServlet?id=<%= a.getNoPolis() %>"><i class="fa fa-trash"></i></a>
-                                                </td>
+                                                    <a href="detNasAutoID?noPolis=<%= a.getNoPolis()%>"><i class="fa fa-book"></i></a>
+                                                   </td>
                                             </tr>
                                         
                                         <%

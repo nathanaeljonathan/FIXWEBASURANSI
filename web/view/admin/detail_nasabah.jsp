@@ -42,7 +42,7 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="indexadmin.jsp">
                         <!-- Logo icon -->
                         <b><img src="images/logo.png" alt="Asuransi" class="dark-logo" /></b>
                         <!--End Logo icon -->
@@ -243,6 +243,7 @@
                                                 <th>NO POLIS</th>
                                                 <th>ASURANSI</th>
                                                 <th>SALDO</th>
+                                                <th>AKSI</th>
                                             </tr>
                                         </thead>
                                         <%
@@ -258,6 +259,10 @@
                                                 <td><%= a.getNoPolis() %></td>
                                                 <td><%= a.getIdAsuransi().getNmAsuransi() %></td>
                                                 <td><%= a.getSaldo()%></td>
+                                                <td>
+                                                    <a href="bayarAutoID?id=<%= a.getIdDetail()%>"><i class="fa fa-money"></i></a> 
+                                                    <a href="klaimAutotID?id=<%= a.getIdDetail()%>"><i class="fa fa-thumbs-up"></i></a> 
+                                                </td>
                                             </tr>
                                         <%
                                             }

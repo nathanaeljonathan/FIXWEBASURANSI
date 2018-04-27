@@ -38,6 +38,12 @@ public class DetailNasServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Detail_nasDao dd = new Detail_nasDao();
         try (PrintWriter out = response.getWriter()) {
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            if (session.getAttribute("admin") == null) {
+//                response.sendRedirect("log-in.jsp");
+                  dispatcher=request.getRequestDispatcher("log-in.jsp");
+                  dispatcher.forward(request, response);
+            }
             List<Object> datas = new Detail_nasDao().getAll();
             if (session.getAttribute("pesan")!=null) {
                 out.print(session.getAttribute("pesan") + "<br>");

@@ -43,7 +43,7 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="indexadmin.jsp">
                         <!-- Logo icon -->
                         <b><img src="images/logo.png" alt="Asuransi" class="dark-logo" /></b>
                         <!--End Logo icon -->
@@ -294,7 +294,8 @@
                                     </div>
                                     <div class="form-actions">
                                         <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                                        <button type="button" class="btn btn-inverse">Cancel</button>
+                                        <a href="admServlet" class="btn btn-inverse">Cancel</a>
+<!--                                        <button type="cancel" class="btn btn-inverse">Cancel</button>-->
                                     </div>
                                 </form>
                             </div>

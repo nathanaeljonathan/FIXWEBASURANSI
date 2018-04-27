@@ -40,6 +40,12 @@ public class TransaksiServlet extends HttpServlet {
         HttpSession session = request.getSession();
         PembayaranDao pdao = new PembayaranDao();
         try (PrintWriter out = response.getWriter()) {
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            if (session.getAttribute("admin") == null) {
+//                response.sendRedirect("log-in.jsp");
+                  dispatcher=request.getRequestDispatcher("log-in.jsp");
+                  dispatcher.forward(request, response);
+            }
             List<Object> datas = new PembayaranDao().getAll();
             if (session.getAttribute("pesan")!=null) {
                 out.print(session.getAttribute("pesan") + "<br>");

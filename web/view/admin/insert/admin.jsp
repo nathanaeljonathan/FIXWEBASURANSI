@@ -41,7 +41,7 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="indexadmin.jsp">
                         <!-- Logo icon -->
                         <b><img src="images/logo.png" alt="Asuransi" class="dark-logo" /></b>
                         <!--End Logo icon -->
@@ -188,7 +188,7 @@
 
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-file-archive-o"></i><span class="hide-menu">Master</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="admServlet">Admin</a></li>
+                                <li><a href="admServlet">Pegawai</a></li>
                                 <li><a href="nasabahServlet">Nasabah</a></li>
                                 <li><a href="detailNasServlet">Detail Nasabah</a></li>
                                 <li><a href="asuranServlet">Asuransi</a></li>
@@ -292,7 +292,8 @@
                                     
                                     <div class="form-actions">
                                         <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                                        <button type="button" class="btn btn-inverse">Cancel</button>
+                                        <a href="admServlet" class="btn btn-inverse">Cancel</a>
+<!--                                        <button type="button" class="btn btn-inverse">Cancel</button>-->
                                     </div>
                                 </form>
                             </div>

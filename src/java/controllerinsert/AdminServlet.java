@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -49,7 +50,7 @@ public class AdminServlet extends HttpServlet {
             admin.setAlamat(alamat);
             admin.setNoTelp(noTelp);
             admin.setEmail(email);
-            admin.setPassword(password);
+            admin.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
             admin.setHakAkses(hakakses);
             if (amdao.insert(admin)) {
                 

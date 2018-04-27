@@ -1,6 +1,7 @@
-<%@page import="dao.AdminDao"%>
+<%@page import="entities.DetailNasabah"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
-<%@page import="entities.Admin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,12 +42,12 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="indexmanager.jsp">
                         <!-- Logo icon -->
                         <b><img src="images/logo.png" alt="Asuransi" class="dark-logo" /></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                        <span><img src="images/logo2.png" alt="Kita" class="dark-logo" /></span>
+                        <span><img src="images/logo-text.png" alt="Kita" class="dark-logo" /></span>
                     </a>
                 </div>
                 <!-- End Logo -->
@@ -123,28 +124,28 @@
                                         <div class="message-center">
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="images/users/5.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                                <div class="user-img"> <img src="asset/images/users/5.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Michael Qin</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span>
                                                 </div>
                                             </a>
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                                                <div class="user-img"> <img src="asset/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>John Doe</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span>
                                                 </div>
                                             </a>
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="images/users/3.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
+                                                <div class="user-img"> <img src="asset/images/users/3.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Mr. John</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span>
                                                 </div>
                                             </a>
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                                                <div class="user-img"> <img src="asset/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Michael Qin</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span>
                                                 </div>
@@ -160,14 +161,14 @@
                         <!-- End Messages -->
                         <!-- Profile -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/users/5.jpg" alt="user" class="profile-pic" /></a>
+                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="asset/images/users/5.jpg" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
                                     <li><a href="#"><i class="ti-user"></i> Profile</a></li>
                                     <li><a href="#"><i class="ti-wallet"></i> Balance</a></li>
                                     <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
                                     <li><a href="#"><i class="ti-settings"></i> Setting</a></li>
-                                    <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    <li><a href="prosesLogout"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -178,21 +179,20 @@
         <!-- End header header -->
         <!-- Left Sidebar  -->
         <div class="left-sidebar">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
+            <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
-                        <li> <a href="index2.html" aria-expanded="false"><i class="fa fa-tachometer" ></i><span class="hide-menu">Dashboard</span></a></li>
-
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Master<span class="label label-rouded label-success pull-right">3</span></span></a>
+                        <li> <a href="indexmanager.jsp" aria-expanded="false"><i class="fa fa-dashboard" ></i><span class="hide-menu">Dashboard</span></a></li>
+                        
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu">Report</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="admServlet">Admin</a></li>
-                                
+                                <li><a href="nasabahManager">Report Nasabah</a></li>
+                                <li><a href="detNasabahmanager">Report Detail Nasabah</a></li>
+                                <li><a href="transaksiManager">Report Transaksi</a></li>
+                                <li><a href="klaimManager">Report Klaim</a></li>
                             </ul>
                         </li>
-                       
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -205,12 +205,11 @@
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Master</h3> </div>
+                    <h3 class="text-primary">Report</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Master</a></li>
-                        <li class="breadcrumb-item active">Admin</li>
-                        <li class="breadcrumb-item active">Insert</li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Report</a></li>
+                        <li class="breadcrumb-item active">Data Detail Nasabah</li>
                     </ol>
                 </div>
             </div>
@@ -219,68 +218,40 @@
             <div class="container-fluid">
                 <!-- Start Page Content -->
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">INSERT ADMIN</h4>
-                                <form class="form p-t-20" action="${pageContext.request.contextPath}/adminInsertServlet" method="POST">
-                                <% String admin = (String) session.getAttribute("autoID"); %>
-                                    <div class="form-group">
-                                        <label for="exampleInputId">ID Admin</label>
-                                        <div class="input-group">
-                                            <div class="input-group-addon"></div>
-                                            <input type="text" class="form-control" name="idAdmin" id="exampleInputId" value="<%= admin %>" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputNama">Nama Admin</label>
-                                        <div class="input-group">
-                                            <div class="input-group-addon"></div>
-                                            <input type="text" class="form-control" id="exampleInputNama" name="nmAdmin" value="" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputNama">Alamat</label>
-                                        <div class="input-group">
-                                            <div class="input-group-addon"></div>
-                                            <input type="text" class="form-control" id="exampleInputNama" name="alamat" value="" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputNama">No Telp</label>
-                                        <div class="input-group">
-                                            <div class="input-group-addon"></div>
-                                            <input type="text" class="form-control" id="exampleInputNama" name="noTelp" value="" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputNama">Email</label>
-                                        <div class="input-group">
-                                            <div class="input-group-addon"></div>
-                                            <input type="text" class="form-control" id="exampleInputNama" name="email" value="" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputNama">Password</label>
-                                        <div class="input-group">
-                                            <div class="input-group-addon"></div>
-                                            <input type="password" class="form-control" id="exampleInputNama" name="password" value="" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="alamat">Hak Akses</label>
-                                            <div class="input-group-addon">
-                                                <select class="form-control" id="val-skill" name="hakakses">
-                                                    <option>ADMIN</option>
-                                                    <option>PEGAWAI</option>
-                                                </select>
-                                            </div>
-                                    </div>
-                                    
-                                    <div class="form-actions">
-                                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                                        <button type="button" class="btn btn-inverse">Cancel</button>
-                                    </div>
-                                </form>
+                                <h4 class="card-title">Report Data Detail Nasabah</h4>
+                                <h6 class="card-subtitle">Export data to Exel & PDF</h6>
+                                <div class="table-responsive m-t-40">
+                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>ID DETAIL</th>
+                                                <th>NAMA</th>
+                                                <th>NO POLIS</th>
+                                                <th>ASURANSI</th>
+                                                <th>SALDO</th>
+                                            </tr>
+                                        </thead>
+                                        <%
+                                            List<Object> datas = (List<Object>) session.getAttribute("dataReportDetnasManager") ;
+                                            int i = 1;
+                                            for (Object data : datas) {
+                                                DetailNasabah a = (DetailNasabah) data;
+                                        %>
+                                            <tr>
+                                                <td><%= a.getIdDetail()%></td>
+                                                <td><%= a.getNoPolis().getNmNasabah() %></td>
+                                                <td><%= a.getNoPolis() %></td>
+                                                <td><%= a.getIdAsuransi().getNmAsuransi() %></td>
+                                                <td><%= a.getSaldo()%></td>
+                                            </tr>
+                                            <%
+                                            }
+                                        %>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -306,6 +277,16 @@
     <!--Custom JavaScript -->
     <script src="asset/js/custom.min.js"></script>
 
+
+    <script src="asset/js/lib/datatables/datatables.min.js"></script>
+    <script src="asset/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="asset/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="asset/js/lib/datatables/cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="asset/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="asset/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script src="asset/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="asset/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <script src="asset/js/lib/datatables/datatables-init.js"></script>
 </body>
 
 </html>

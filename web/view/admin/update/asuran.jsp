@@ -44,7 +44,7 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="indexadmin.jsp">
                         <!-- Logo icon -->
                         <b><img src="images/logo.png" alt="Asuransi" class="dark-logo" /></b>
                         <!--End Logo icon -->
@@ -270,7 +270,9 @@
                                     </div>
                                     
                                     <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
-                                    <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+                                    <a href="asuranServlet" class="btn btn-inverse">Cancel</a>
+                                    <a href="nasabahServlet" class="btn btn-inverse">Cancel</a>
+                                    <!--<button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>-->
                                 </form>
                             </div>
                         </div>

@@ -51,6 +51,9 @@ public class PembayaranDao implements InterfaceDao{
     public List<Object> search(String category, String search) {
         return fdao.getAll("FROM Pembayaran WHERE " + category + " LIKE '%" + search + "%'");
     }
+    public List<Object> searchhistory(String search1, String search2) {
+        return fdao.getAll("FROM Pembayaran WHERE idAsuransi= '" + search1 + "' AND noPolis= '" + search2 + "'");
+    }
 
     @Override
     public Object getById(String id) {

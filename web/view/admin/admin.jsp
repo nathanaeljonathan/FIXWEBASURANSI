@@ -41,7 +41,7 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="indexadmin.jsp">
                         <!-- Logo icon -->
                         <b><img src="images/logo.png" alt="Asuransi" class="dark-logo" /></b>
                         <!--End Logo icon -->
@@ -242,7 +242,6 @@
                                                 <th>ALAMAT</th>
                                                 <th>NO TELPON</th>
                                                 <th>EMAIL</th>
-                                                <th>PASSWORD</th>
                                                 <th>HAK AKSES</th>
                                                 <th>AKSI</th>
                                             </tr>
@@ -259,7 +258,6 @@
                                                 <td><%= a.getAlamat() %></td>
                                                 <td><%= a.getNoTelp() %></td>
                                                 <td><%= a.getEmail() %></td>
-                                                <td><%= a.getPassword()%></td>
                                                 <td><%= a.getHakAkses() %></td>
                                                 <td>
                                                     <a href="adminUpdateServlet?id=<%= a.getIdAdmin()%>"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;

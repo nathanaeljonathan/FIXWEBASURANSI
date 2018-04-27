@@ -35,9 +35,12 @@ public class DetNasAutoID extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         RequestDispatcher dis = null;
+        String id = request.getParameter("noPolis");
         Detail_nasDao dd = new Detail_nasDao();
         try (PrintWriter out = response.getWriter()) {
+//            out.print(id);
             session.setAttribute("autoID", dd.getAutoID());
+            session.setAttribute("id", id);
             dis = request.getRequestDispatcher("view/admin/insert/detail_nasabah.jsp");
             dis.forward(request, response);
         }

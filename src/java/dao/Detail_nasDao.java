@@ -49,12 +49,12 @@ public class Detail_nasDao implements InterfaceDao {
 
     @Override
     public List<Object> search(String category, String search) {
-        return fdao.getAll("FROM Detail_nasabah WHERE " + category + " LIKE '%" + search + "%'");
+        return fdao.getAll("FROM DetailNasabah WHERE " + category + " LIKE '%" + search + "%'");
     }
 
     @Override
     public Object getById(String id) {
-        return fdao.getById("from Detail_nasabah where id_detail='" + id + "'");
+        return fdao.getById("from DetailNasabah where idDetail='" + id + "'");
     }
     
      public String getAutoID(){

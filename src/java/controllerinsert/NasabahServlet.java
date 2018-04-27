@@ -47,7 +47,9 @@ public class NasabahServlet extends HttpServlet {
         String alamat = request.getParameter("alamat");
         String admin = request.getParameter("admin");
         NasabahDao ndao = new NasabahDao();
+        RequestDispatcher dispatcher = null;
         Date date1 = null;
+        String direct = "", pesan="";
         try {
             date1 = new SimpleDateFormat("yyyy-MM-dd").parse(tgllahir);
         } catch (Exception ex) {
@@ -65,30 +67,26 @@ public class NasabahServlet extends HttpServlet {
             nasabah.setAlamat(alamat);
             nasabah.setIdAdmin(new Admin(admin));
             if (ndao.insert(nasabah)) {
+                pesan = "swal('Selamat!', 'Berhasil Menambahkan Data!', 'success');";
+                direct = "detNasAutoID?noPolis"+id;
                 
-                out.println("<script src = 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-                out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-                out.println("<script>");
-                out.println("$(document).ready(function(){");
-                out.println("swal('Selamat!', 'Berhasil Menambahkan Data!', 'success');");
-                out.println("});");
-                out.println("</script>");
                 
-                RequestDispatcher dispatcher = request.getRequestDispatcher("detNasAutoID");
-                dispatcher.include(request, response);
             }
             else{
-                out.println("<script src = 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                pesan = "swal('Oops...', 'Gagal Menambahkan Data !!', 'error');";
+                direct = "view/admin/insert/nasabah.jsp";
+                 
+            }
+            out.println("<script src = 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
                 out.println("<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
                 out.println("<script>");
                 out.println("$(document).ready(function(){");
-                out.println("swal('Oops...', 'Gagal Menambahkan Data !!', 'error');");
+                out.println(pesan);
                 out.println("});");
                 out.println("</script>");
 
-                RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/insert/nasabah.jsp");
-                dispatcher.include(request, response); 
-            }
+                dispatcher = request.getRequestDispatcher(direct);
+                dispatcher.include(request, response);
         }
     }
 

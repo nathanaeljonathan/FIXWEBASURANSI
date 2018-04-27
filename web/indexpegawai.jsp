@@ -1,3 +1,4 @@
+<%@page import="entities.Admin"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,6 +31,9 @@
 </head>
 
 <body class="fix-header fix-sidebar">
+    <%  Object datas = session.getAttribute("admin");
+    Admin admin = (Admin) datas;
+    %>
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -179,36 +183,21 @@
         <!-- End header header -->
         <!-- Left Sidebar  -->
         <div class="left-sidebar">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
+            <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
-                        <li> <a href="indexadmin.jsp" aria-expanded="false"><i class="fa fa-dashboard" ></i><span class="hide-menu">Dashboard</span></a></li>
+                        <li> <a href="indexpegawai.jsp" aria-expanded="false"><i class="fa fa-dashboard" ></i><span class="hide-menu">Dashboard</span></a></li>
 
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-file-archive-o"></i><span class="hide-menu">Master</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="nasabahServlet">Nasabah</a></li>
-                                <li><a href="detailNasServlet">Detail Nasabah</a></li>
-                                <li><a href="asuranServlet">Asuransi</a></li>
+                                <li><a href="nasabahPegawai">Nasabah</a></li>
+                                <li><a href="detailNasPegawai">Detail Nasabah</a></li>
                             </ul>
                         </li>
                         
-                        <li> <a href="transaksiServlet" aria-expanded="false"><i class="fa fa-money"></i><span class="hide-menu">Transaksi</span></a></li>
-                        <li> <a href="klaimServlet" aria-expanded="false"><i class="fa fa-deaf"></i><span class="hide-menu">Klaim</span></a></li>
-                        
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu">Report</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="reportNasabah">Report Nasabah</a></li>
-                                <li><a href="reportDetNasabah">Report Detail Nasabah</a></li>
-                                <li><a href="reportTransaksi">Report Transaksi</a></li>
-                                <li><a href="reportKlaim">Report Klaim</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- End Sidebar navigation -->
+                        <li> <a href="transaksiPegawai" aria-expanded="false"><i class="fa fa-money"></i><span class="hide-menu">Transaksi</span></a></li>
+                        <li> <a href="klaimPegawai" aria-expanded="false"><i class="fa fa-deaf"></i><span class="hide-menu">Klaim</span></a></li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -218,18 +207,20 @@
         <!-- End Left Sidebar  -->
         <!-- Page wrapper  -->
         <div class="page-wrapper">
+            
             <!-- Bread crumb -->
             <div class="row page-titles">
+                <img src="asset/images/img1.jpg" padding="4px">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">SELAMAT DATANG ${admin}</h3> </div>
+                    <br>
+                    <h3 class="text-primary">WELCOME <%= admin.getNamaAdmin() %> :)</h3> </div>
+                    
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                         <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
                 </div>
-            </div>
-            <!-- End Bread crumb -->
             <!-- Container fluid  -->
             <div class="container-fluid">
                 <!-- Start Page Content -->

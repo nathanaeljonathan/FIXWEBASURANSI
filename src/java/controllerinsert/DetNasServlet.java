@@ -67,7 +67,7 @@ public class DetNasServlet extends HttpServlet {
                 out.println("});");
                 out.println("</script>");
                 
-                RequestDispatcher dispatcher = request.getRequestDispatcher("bayarAutoID");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("detailNasServlet");
                 dispatcher.include(request, response);
             }
             else{

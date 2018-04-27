@@ -30,6 +30,9 @@
 </head>
 
 <body class="fix-header fix-sidebar">
+    <% Object datas = session.getAttribute("admin");
+        Admin admin = (Admin) datas;
+    %>
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -42,7 +45,7 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="indexadmin.jsp">
                         <!-- Logo icon -->
                         <b><img src="images/logo.png" alt="Asuransi" class="dark-logo" /></b>
                         <!--End Logo icon -->
@@ -272,7 +275,7 @@
                                         <label for="exampleInputStatus">Status</label>
                                         <div class="input-group">
                                             <div class="input-group-addon"></div>
-                                            <input type="radio" id="exampleInputStatus" name="status" value="LAJANG">Lajang <br>
+                                            <input type="radio" id="exampleInputStatus" name="status" checked="" value="LAJANG">Lajang <br>
                                             <input type="radio" id="exampleInputStatus" name="status" value="MENIKAH">Menikah <br>
                                         </div>
                                     </div>
@@ -298,22 +301,17 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="alamat">Admin</label>
-                                            <div class="input-group-addon">
-                                                <select class="form-control" id="val-skill" name="admin">
-                                                    <% List<Object> datas2 = new AdminDao().getAll();
-                                                        for (Object data : datas2){
-                                                            Admin admin = (Admin) data; %>
-                                                            <option value="<%= admin.getIdAdmin() %>"><%= admin.getNamaAdmin() %></option>
-                                                        <%
-                                                        }
-                                                        %>
-                                                </select>
+                                        <label for="admin">Admin</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon"></div>
+                                                <input type="text" class="form-control" id="admin" name="admin" value="<%= admin.getIdAdmin() %>" required >
+                                        
                                             </div>
                                         </div>
                                         <div class="form-actions">
                                             <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                                            <button type="button" class="btn btn-inverse">Cancel</button>
+                                            <a href="nasabahServlet" class="btn btn-inverse">Cancel</a>
+                                            <!--<button type="button" class="btn btn-inverse">Cancel</button>-->
                                         </div>
                                 </form>
                             </div>

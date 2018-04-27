@@ -5,7 +5,10 @@
  */
 package controllerinsert;
 
+import dao.Detail_nasDao;
+import dao.NasabahDao;
 import dao.PembayaranDao;
+import entities.DetailNasabah;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -36,8 +39,10 @@ public class BayarAutoID extends HttpServlet {
         HttpSession session = request.getSession();
         RequestDispatcher dis = null;
         PembayaranDao pd = new PembayaranDao();
+        String id = request.getParameter("id");
         try (PrintWriter out = response.getWriter()) {
             session.setAttribute("autoID", pd.getAutoID());
+            session.setAttribute("detailnasabah", new Detail_nasDao().getById(id));
             dis = request.getRequestDispatcher("view/admin/insert/pembayaran.jsp");
             dis.forward(request, response);
         }

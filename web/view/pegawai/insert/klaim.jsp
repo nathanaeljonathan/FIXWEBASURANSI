@@ -1,3 +1,4 @@
+<%@page import="entities.DetailNasabah"%>
 <%@page import="entities.Asuransi"%>
 <%@page import="dao.AsuransiDao"%>
 <%@page import="java.util.List"%>
@@ -29,6 +30,11 @@
 </head>
 
 <body class="fix-header fix-sidebar">
+    <%
+            Object datas = session.getAttribute("detailnasabah");
+            DetailNasabah nasabah = (DetailNasabah) datas;
+            
+        %>
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -41,7 +47,7 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="indexadmin.jsp">
                         <!-- Logo icon -->
                         <b><img src="images/logo.png" alt="Asuransi" class="dark-logo" /></b>
                         <!--End Logo icon -->
@@ -123,28 +129,28 @@
                                         <div class="message-center">
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="images/users/5.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                                <div class="user-img"> <img src="asset/images/users/5.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Michael Qin</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span>
                                                 </div>
                                             </a>
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                                                <div class="user-img"> <img src="asset/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>John Doe</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span>
                                                 </div>
                                             </a>
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="images/users/3.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
+                                                <div class="user-img"> <img src="asset/images/users/3.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Mr. John</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span>
                                                 </div>
                                             </a>
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                                                <div class="user-img"> <img src="asset/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Michael Qin</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span>
                                                 </div>
@@ -160,14 +166,14 @@
                         <!-- End Messages -->
                         <!-- Profile -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/users/5.jpg" alt="user" class="profile-pic" /></a>
+                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="asset/images/users/5.jpg" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
                                     <li><a href="#"><i class="ti-user"></i> Profile</a></li>
                                     <li><a href="#"><i class="ti-wallet"></i> Balance</a></li>
                                     <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
                                     <li><a href="#"><i class="ti-settings"></i> Setting</a></li>
-                                    <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    <li><a href="prosesLogout"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -180,31 +186,21 @@
         <div class="left-sidebar">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
-                 <!-- Sidebar navigation-->
+                <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
-                        <li> <a href="index.html" aria-expanded="false"><i class="fa fa-tachometer" ></i><span class="hide-menu">Dashboard</span></a></li>
+                        <li> <a href="indexpegawai.jsp" aria-expanded="false"><i class="fa fa-dashboard" ></i><span class="hide-menu">Dashboard</span></a></li>
 
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Master<span class="label label-rouded label-success pull-right">3</span></span></a>
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-file-archive-o"></i><span class="hide-menu">Master</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="nasabahServlet">Nasabah</a></li>
-                                <li><a href="detailNasServlet">Detail Nasabah</a></li>
-                                <li><a href="asuranServlet">Asuransi</a></li>
+                                <li><a href="nasabahPegawai">Nasabah</a></li>
+                                <li><a href="detailNasPegawai">Detail Nasabah</a></li>
                             </ul>
                         </li>
                         
-                        <li> <a href="transaksiServlet" aria-expanded="false"><i class="fa fa-columns"></i><span class="hide-menu">Transaksi</span></a></li>
-                        <li> <a href="klaimServlet" aria-expanded="false"><i class="fa fa-wpforms"></i><span class="hide-menu">Klaim</span></a></li>
-                        
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu">Report<span class="label label-rouded label-warning pull-right">3</span></span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="reportNasabah">Report Nasabah</a></li>
-                                <li><a href="reportDetNasabah">Report Detail Nasabah</a></li>
-                                <li><a href="reportTransaksi">Report Transaksi</a></li>
-                                <li><a href="reportKlaim">Report Klaim</a></li>
-                            </ul>
-                        </li>
+                        <li> <a href="transaksiPegawai" aria-expanded="false"><i class="fa fa-money"></i><span class="hide-menu">Transaksi</span></a></li>
+                        <li> <a href="klaimPegawai" aria-expanded="false"><i class="fa fa-deaf"></i><span class="hide-menu">Klaim</span></a></li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -234,7 +230,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">INPUT KLAIM</h4>
-                                <form class="form p-t-20" action="${pageContext.request.contextPath}/klaimInsertServlet" method="POST">
+                                <form class="form p-t-20" action="${pageContext.request.contextPath}/klaimPegawaiIn" method="POST">
                                 <% String klaim = (String) session.getAttribute("autoID"); %>
                                     <div class="form-group">
                                         <label for="exampleInputId">ID Klaim</label>
@@ -247,20 +243,14 @@
                                         <label for="exampleInputPolis">No Polis</label>
                                         <div class="input-group">
                                             <div class="input-group-addon"></div>
-                                            <input type="text" class="form-control" id="exampleInputPolis" name="noPolis" value="" required>
+                                            <input type="text" class="form-control" id="exampleInputPolis" name="noPolis" value="<%= nasabah.getNoPolis().getNoPolis() %>" readonly="" >
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="alamat">Asuransi</label>
-                                            <div class="input-group-addon">
-                                                <select class="form-control" id="val-skill" name="idAsuransi">
-                                                    <% List<Object> datas2 = new AsuransiDao().getAll();
-                                                    for (Object data : datas2){
-                                                        Asuransi asrrr = (Asuransi) data; %>
-                                                        <option value="<%= asrrr.getIdAsuransi()%>"><%= asrrr.getNmAsuransi()%></option>
-                                                        <%
-                                                    } %>
-                                            </select>
+                                        <label for="exampleInputPolis">Asuransi</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon"></div>
+                                            <input type="text" class="form-control" id="exampleInputPolis" name="idAsuransi" value="<%= nasabah.getIdAsuransi() %>" required="" readonly="">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -271,7 +261,8 @@
                                     </div>
                                     <div class="form-actions">
                                             <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                                            <button type="button" class="btn btn-inverse">Cancel</button>
+                                            <a href="klaimPegawai" class="btn btn-inverse">Cancel</a>
+                                            <!--<button type="button" class="btn btn-inverse">Cancel</button>-->
                                     </div>
                                 </form>
                             </div>
